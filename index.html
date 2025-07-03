@@ -1,109 +1,682 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Onan Thomas - Visual Designer</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Onan Thomas | Visual Designer & Tech Specialist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Brand Color Variables */
+        :root {
+            --primary-green: #2ba745;
+            --secondary-blue: #007bff;
+            --neutral-gray: #6c757d;
+            --accent-teal: #17a2b8;
+            --light-gray: #f8f9fa;
+            --dark-gray: #343a40;
+            --terminal-green: #32cd32;
+        }
+        
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #ffffff;
+            color: var(--neutral-gray);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            color: var(--dark-gray);
+            font-weight: 700;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin: 2rem 0 1rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary-green);
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--dark-gray) 0%, var(--neutral-gray) 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white;
+        }
+        
+        .logo span {
+            color: var(--primary-green);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-green);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .tagline {
+            display: inline-block;
+            background: rgba(43, 167, 69, 0.2);
+            border-left: 3px solid var(--primary-green);
+            padding: 0.5rem 1rem;
+            font-style: italic;
+            margin: 1rem 0;
+        }
+        
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+        }
+        
+        .btn-primary {
+            background: var(--primary-green);
+            color: white;
+            border: 2px solid var(--primary-green);
+        }
+        
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--primary-green);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-secondary:hover {
+            background: white;
+            color: var(--dark-gray);
+        }
+        
+        /* About Section */
+        .about {
+            padding: 5rem 0;
+            background: white;
+        }
+        
+        .profile-container {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+            margin-top: 2rem;
+        }
+        
+        .profile-img {
+            flex: 1;
+            max-width: 350px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .profile-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .profile-info {
+            flex: 2;
+        }
+        
+        .highlight {
+            color: var(--primary-green);
+            font-weight: 600;
+        }
+        
+        /* Skills Section */
+        .skills {
+            background: var(--light-gray);
+            padding: 5rem 0;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .skill-category {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .skill-category:hover {
+            transform: translateY(-5px);
+        }
+        
+        .skill-category h3 {
+            color: var(--secondary-blue);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .skill-category h3 i {
+            margin-right: 0.5rem;
+            color: var(--primary-green);
+        }
+        
+        .skill-list {
+            list-style: none;
+        }
+        
+        .skill-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .stars {
+            color: gold;
+        }
+        
+        /* Experience Section */
+        .experience {
+            padding: 5rem 0;
+            background: white;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 2rem auto 0;
+        }
+        
+        .timeline:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary-green);
+            left: 50%;
+            margin-left: -1px;
+        }
+        
+        .timeline-item {
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .timeline-content {
+            width: 45%;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+        
+        .timeline-content:after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .left:after {
+            right: -15px;
+            border-width: 10px 0 10px 15px;
+            border-color: transparent transparent transparent white;
+        }
+        
+        .right {
+            left: 55%;
+        }
+        
+        .right:after {
+            left: -15px;
+            border-width: 10px 15px 10px 0;
+            border-color: transparent white transparent transparent;
+        }
+        
+        .timeline-date {
+            position: absolute;
+            top: 15px;
+            width: 100px;
+            text-align: center;
+            left: 50%;
+            margin-left: -50px;
+            background: var(--primary-green);
+            color: white;
+            padding: 0.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+        }
+        
+        /* Terminal Effect */
+        .terminal {
+            background: var(--dark-gray);
+            border-radius: 8px;
+            padding: 1.5rem;
+            font-family: 'Courier New', monospace;
+            margin: 2rem 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .terminal-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+        
+        .dot-red {
+            background: #ff5f56;
+        }
+        
+        .dot-yellow {
+            background: #ffbd2e;
+        }
+        
+        .dot-green {
+            background: #27c93f;
+        }
+        
+        .terminal-content {
+            color: var(--terminal-green);
+            line-height: 1.8;
+        }
+        
+        .terminal-content span {
+            color: var(--accent-teal);
+        }
+        
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, var(--dark-gray) 0%, #2c3e50 100%);
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+        }
+        
+        .contact h2 {
+            color: white;
+        }
+        
+        .contact h2:after {
+            background: var(--accent-teal);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .social-link:hover {
+            background: var(--primary-green);
+            transform: translateY(-5px);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark-gray);
+            color: rgba(255, 255, 255, 0.7);
+            text-align: center;
+            padding: 2rem 0;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .profile-container {
+                flex-direction: column;
+            }
+            
+            .timeline:before {
+                left: 30px;
+            }
+            
+            .timeline-content {
+                width: auto;
+                margin-left: 70px;
+            }
+            
+            .left, .right {
+                left: 0;
+            }
+            
+            .left:after, .right:after {
+                left: -15px;
+                border-width: 10px 15px 10px 0;
+                border-color: transparent white transparent transparent;
+            }
+            
+            .timeline-date {
+                left: 0;
+                margin-left: 0;
+                text-align: left;
+                width: 60px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Header -->
     <header>
         <div class="container">
-            <div class="profile-header">
-                <img src="images/Ologo.png" alt="Onan Thomas" class="profile-img">
-                <div class="profile-info">
-                    <h1>Onan Thomas</h1>
-                    <h2>Visual Designer & Web Developer</h2>
-                    <p class="tagline">Creating compelling visual experiences through design and code</p>
-                </div>
-            </div>
+            <nav>
+                <div class="logo">onan<span>.tech</span></div>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
-    <nav class="main-nav">
+    <!-- Hero Section -->
+    <section class="hero">
         <div class="container">
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+            <div class="hero-content">
+                <h1>Onan Thomas</h1>
+                <p class="tagline">Visual Designer & Technology Specialist</p>
+                <p>Creating compelling visual experiences through design and technology</p>
+                <div class="hero-btns">
+                    <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                    <a href="#skills" class="btn btn-secondary">View Skills</a>
+                </div>
+            </div>
         </div>
-    </nav>
+    </section>
 
-    <main class="container">
-        <section id="about" class="card">
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
             <h2>About Me</h2>
-            <p>I'm a passionate visual designer with experience in graphic design and web development. I specialize in creating visually appealing designs while ensuring functionality and user experience. Currently expanding my skills in web development to create more dynamic digital experiences.</p>
-        </section>
+            <div class="profile-container">
+                <div class="profile-img">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Onan Thomas">
+                </div>
+                <div class="profile-info">
+                    <p>I'm a passionate visual designer with expertise in graphic design and emerging technologies. With a background in both creative design and technical implementation, I bridge the gap between visual aesthetics and functional technology solutions.</p>
+                    <p>My journey began in visual design, where I honed skills in Adobe Creative Suite and developed a keen eye for detail. This foundation led me to explore the technical aspects of design, including web development and Python programming.</p>
+                    <p>Today, I specialize in creating visually compelling experiences that leverage both design principles and technical implementation. My approach combines <span class="highlight">creative vision</span> with <span class="highlight">technical precision</span> to deliver solutions that are both beautiful and functional.</p>
+                </div>
+            </div>
+            
+            <!-- Terminal-style Code Block -->
+            <div class="terminal">
+                <div class="terminal-header">
+                    <div class="terminal-dot dot-red"></div>
+                    <div class="terminal-dot dot-yellow"></div>
+                    <div class="terminal-dot dot-green"></div>
+                </div>
+                <div class="terminal-content">
+                    <span>onan@portfolio:~$</span> whoami<br>
+                    > Visual Designer & Technology Specialist<br><br>
+                    
+                    <span>onan@portfolio:~$</span> skills --show<br>
+                    > Photoshop, Premiere Pro, Python, Web Development<br><br>
+                    
+                    <span>onan@portfolio:~$</span> philosophy<br>
+                    > "There was no blue before green - honor the original spectrum"<br>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <section id="skills" class="card">
-            <h2>Skills</h2>
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2>My Skills</h2>
             <div class="skills-grid">
                 <div class="skill-category">
-                    <h3>Design Skills</h3>
+                    <h3><i class="fas fa-palette"></i> Design Skills</h3>
                     <ul class="skill-list">
                         <li>Background Removal <span class="stars">⭐⭐⭐⭐⭐</span></li>
                         <li>Color Correction <span class="stars">⭐⭐⭐⭐</span></li>
                         <li>Displacement Maps <span class="stars">⭐⭐⭐</span></li>
+                        <li>Typography & Layout</li>
+                        <li>Brand Identity</li>
                     </ul>
                 </div>
                 <div class="skill-category">
-                    <h3>Technical Skills</h3>
+                    <h3><i class="fas fa-laptop-code"></i> Technical Skills</h3>
                     <ul class="skill-list">
-                        <li><a href="skills.html">View All Technical Skills</a></li>
                         <li>Adobe Photoshop</li>
                         <li>Adobe Premiere Pro</li>
-                        <li>Python</li>
-                        <li>Microsoft Office</li>
+                        <li>Python Programming</li>
+                        <li>HTML5/CSS3</li>
+                        <li>Web Development</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-tools"></i> Software & Tools</h3>
+                    <ul class="skill-list">
+                        <li>Microsoft Office Suite</li>
+                        <li>Adobe Creative Cloud</li>
+                        <li>VS Code</li>
+                        <li>Git & GitHub</li>
+                        <li>Project Management Tools</li>
                     </ul>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="experience" class="card">
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
             <h2>Work Experience</h2>
             <div class="timeline">
                 <div class="timeline-item">
-                    <div class="timeline-date">2017 - 2018</div>
-                    <div class="timeline-content">
+                    <div class="timeline-date">2017-2018</div>
+                    <div class="timeline-content left">
                         <h3>Astaphans (Advertising)</h3>
                         <p>Visual Designer</p>
+                        <p>Created compelling visual content for advertising campaigns, managed brand identities, and developed marketing materials for diverse clients.</p>
                     </div>
                 </div>
                 <div class="timeline-item">
-                    <div class="timeline-date">2011 - 2015</div>
-                    <div class="timeline-content">
+                    <div class="timeline-date">2011-2015</div>
+                    <div class="timeline-content right">
                         <h3>Sat Telecommunication Limited</h3>
                         <p>Technical Specialist</p>
+                        <p>Implemented technical solutions, managed communication systems, and provided technical support for telecommunications infrastructure.</p>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="education" class="card">
-            <h2>Education</h2>
-            <ul class="education-list">
-                <li>Mathematics</li>
-                <li>English</li>
-                <li>Agri Science</li>
-                <li>Information Technology</li>
-                <li>Electrical and Electronic Science</li>
-            </ul>
-        </section>
-    </main>
-
-    <footer id="contact">
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
         <div class="container">
-            <h2>Contact Me</h2>
-            <div class="contact-links">
-                <a href="Contactme.html" class="btn">Send a Message</a>
-                <a href="https://github.com/OnanT" target="_blank" class="social-link"><i class="fab fa-github"></i> GitHub</a>
+            <h2>Get In Touch</h2>
+            <p>Have a project in mind or want to discuss potential opportunities?</p>
+            
+            <div class="social-links">
+                <a href="https://github.com/OnanT" class="social-link" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="#" class="social-link">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="#" class="social-link">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="mailto:contact@onan.shop" class="social-link">
+                    <i class="fas fa-envelope"></i>
+                </a>
             </div>
+            
+            <a href="Contactme.html" class="btn btn-primary">Send a Message</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Onan Thomas. All rights reserved.</p>
+            <p>Designed with <span style="color: var(--primary-green);">♥</span> and the original spectrum</p>
         </div>
     </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Terminal typewriter effect
+        const terminalText = document.querySelector('.terminal-content');
+        if (terminalText) {
+            const text = terminalText.innerHTML;
+            terminalText.innerHTML = '';
+            
+            let i = 0;
+            const typeWriter = () => {
+                if (i < text.length) {
+                    terminalText.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 20);
+                }
+            };
+            
+            typeWriter();
+        }
+    </script>
 </body>
 </html>
