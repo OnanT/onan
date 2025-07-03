@@ -1,66 +1,109 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>➳Onan's Personal Site</title>
-    </head>
-    <body>
-        <Table cellspacing="20">
-            <tr>
-                <td><img src="images/Ologo.png" alt="Onan Profile photo"></td>
-                <td>
-        <h1>Onan Thomas</h1>
-        <p><em>Visual <strong><a href="https://github.com/OnanT"> Designer</a></strong></em></p>
-        <p>I am a Graphics Designer. I new to Web Development </p>
-                </td>
-            </tr>
-    </Table>
-        <hr>
-        <h3>Education</h3>
-        <ul>
-            <li>Mathematics</li>
-            <li>English</li>
-            <li>Agri Science</li>
-            <li>Information Technology</li>
-            <li>Electrical and Electronic Science</li>
-        </ul>
-        <h3>Work experence</h3>
-        <table cellspacing="10">
-            <thead>
-                <th>Dates</th>
-                <th>Work Place</th>
-            </thead>
-            <tbody>
-            <tr>
-                <td>2011-2015</td>
-                <td>Sat Telecommunication Limited</td>
-            </tr>
-            <tr>
-                <td>2017 - 2018</td>
-                <td>Astaphans (Advertising)</td>
-            </tr>
-        </tbody>
-        </table>
-        <hr>
-        <h3>Skills</h3>
-        <table cellspacing="15">
-            <tr>
-                <td>Background Removal</td>
-                <td>⭐⭐⭐⭐⭐</td>
-            </tr>
-            <tr>
-                <td>Color Correction</td>
-                <td>⭐⭐⭐⭐</td>
-            </tr>
-            <tr>
-                <td>Displacement maps</td>
-                <td>⭐⭐⭐</td>
-            </tr>
-        </table>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onan Thomas - Visual Designer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="profile-header">
+                <img src="images/Ologo.png" alt="Onan Thomas" class="profile-img">
+                <div class="profile-info">
+                    <h1>Onan Thomas</h1>
+                    <h2>Visual Designer & Web Developer</h2>
+                    <p class="tagline">Creating compelling visual experiences through design and code</p>
+                </div>
+            </div>
+        </div>
+    </header>
 
-        <a href="skills.html">Technological Skills</a>
-        <br>
-        <a href="Contactme.html">Contact Me</a>
+    <nav class="main-nav">
+        <div class="container">
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
 
-    </body>
+    <main class="container">
+        <section id="about" class="card">
+            <h2>About Me</h2>
+            <p>I'm a passionate visual designer with experience in graphic design and web development. I specialize in creating visually appealing designs while ensuring functionality and user experience. Currently expanding my skills in web development to create more dynamic digital experiences.</p>
+        </section>
+
+        <section id="skills" class="card">
+            <h2>Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Design Skills</h3>
+                    <ul class="skill-list">
+                        <li>Background Removal <span class="stars">⭐⭐⭐⭐⭐</span></li>
+                        <li>Color Correction <span class="stars">⭐⭐⭐⭐</span></li>
+                        <li>Displacement Maps <span class="stars">⭐⭐⭐</span></li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Technical Skills</h3>
+                    <ul class="skill-list">
+                        <li><a href="skills.html">View All Technical Skills</a></li>
+                        <li>Adobe Photoshop</li>
+                        <li>Adobe Premiere Pro</li>
+                        <li>Python</li>
+                        <li>Microsoft Office</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="card">
+            <h2>Work Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2017 - 2018</div>
+                    <div class="timeline-content">
+                        <h3>Astaphans (Advertising)</h3>
+                        <p>Visual Designer</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2011 - 2015</div>
+                    <div class="timeline-content">
+                        <h3>Sat Telecommunication Limited</h3>
+                        <p>Technical Specialist</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="card">
+            <h2>Education</h2>
+            <ul class="education-list">
+                <li>Mathematics</li>
+                <li>English</li>
+                <li>Agri Science</li>
+                <li>Information Technology</li>
+                <li>Electrical and Electronic Science</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <h2>Contact Me</h2>
+            <div class="contact-links">
+                <a href="Contactme.html" class="btn">Send a Message</a>
+                <a href="https://github.com/OnanT" target="_blank" class="social-link"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+        </div>
+    </footer>
+</body>
 </html>
