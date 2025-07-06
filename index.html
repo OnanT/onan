@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Onan Thomas | Visual Designer & Tech Specialist</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <style>
         /* Brand Color Variables */
         :root {
@@ -29,6 +30,7 @@
             background-color: #ffffff;
             color: var(--neutral-gray);
             line-height: 1.6;
+            overflow-x: hidden;
         }
         
         .container {
@@ -395,6 +397,219 @@
             color: var(--accent-teal);
         }
         
+        /* Projects Section */
+        .projects {
+            background: var(--light-gray);
+            padding: 5rem 0;
+        }
+        
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .project-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
+        }
+        
+        .project-content {
+            padding: 1.5rem;
+        }
+        
+        .project-content h3 {
+            color: var(--secondary-blue);
+            margin-bottom: 0.5rem;
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+        
+        .project-tag {
+            background: rgba(43, 167, 69, 0.1);
+            color: var(--primary-green);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        /* Kalinago Territory Section */
+        .kalinago-section {
+            padding: 5rem 0;
+            background: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .kalinago-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--primary-green) 0%, var(--accent-teal) 100%);
+            z-index: 0;
+            clip-path: polygon(100% 0, 0 100%, 100% 100%);
+            opacity: 0.1;
+        }
+        
+        .kalinago-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .kalinago-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .kalinago-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .kalinago-features {
+            list-style: none;
+        }
+        
+        .kalinago-features li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+        
+        .kalinago-features li:before {
+            content: '✓';
+            color: var(--primary-green);
+            font-weight: bold;
+            margin-right: 0.8rem;
+            font-size: 1.2rem;
+        }
+        
+        /* GreyWolf Project Section */
+        .greywolf-section {
+            padding: 5rem 0;
+            background: var(--light-gray);
+        }
+        
+        .greywolf-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .greywolf-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .greywolf-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .greywolf-features {
+            list-style: none;
+        }
+        
+        .greywolf-features li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+        
+        .greywolf-features li:before {
+            content: '✓';
+            color: var(--primary-green);
+            font-weight: bold;
+            margin-right: 0.8rem;
+            font-size: 1.2rem;
+        }
+        
+        /* Donation Section */
+        .donation-section {
+            padding: 5rem 0;
+            background: white;
+            text-align: center;
+        }
+        
+        .donation-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .donation-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .donation-card {
+            background: var(--light-gray);
+            padding: 1.5rem;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+        
+        .donation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .donation-card h3 {
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+        }
+        
+        .donation-card .price {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--dark-gray);
+            margin: 1rem 0;
+        }
+        
         /* Contact Section */
         .contact {
             background: linear-gradient(135deg, var(--dark-gray) 0%, #2c3e50 100%);
@@ -447,13 +662,9 @@
         }
         
         /* Responsive Design */
-        @media (max-width: 768px) {
-            .profile-container {
-                flex-direction: column;
-            }
-            
-            .timeline:before {
-                left: 30px;
+        @media (max-width: 992px) {
+            .greywolf-container, .kalinago-container {
+                grid-template-columns: 1fr;
             }
             
             .timeline-content {
@@ -470,6 +681,16 @@
                 border-width: 10px 15px 10px 0;
                 border-color: transparent white transparent transparent;
             }
+        }
+        
+        @media (max-width: 768px) {
+            .profile-container {
+                flex-direction: column;
+            }
+            
+            .timeline:before {
+                left: 30px;
+            }
             
             .timeline-date {
                 left: 0;
@@ -485,6 +706,19 @@
     </style>
 </head>
 <body>
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/68696f0ef43c32191920b870/1ivdtjkoi';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
     <!-- Header -->
     <header>
         <div class="container">
@@ -493,7 +727,10 @@
                 <ul class="nav-links">
                     <li><a href="#about">About</a></li>
                     <li><a href="#skills">Skills</a></li>
-                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#kalinago">Kalinago</a></li>
+                    <li><a href="#greywolf">GreyWolf</a></li>
+                    <li><a href="#donate">Donate</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
@@ -509,7 +746,7 @@
                 <p>Creating compelling visual experiences through design and technology</p>
                 <div class="hero-btns">
                     <a href="#contact" class="btn btn-primary">Get In Touch</a>
-                    <a href="#skills" class="btn btn-secondary">View Skills</a>
+                    <a href="#projects" class="btn btn-secondary">View Projects</a>
                 </div>
             </div>
         </div>
@@ -590,27 +827,165 @@
         </div>
     </section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="experience">
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
         <div class="container">
-            <h2>Work Experience</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-date">2017-2018</div>
-                    <div class="timeline-content left">
-                        <h3>Astaphans (Advertising)</h3>
-                        <p>Visual Designer</p>
-                        <p>Created compelling visual content for advertising campaigns, managed brand identities, and developed marketing materials for diverse clients.</p>
+            <h2>Featured Projects</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80" alt="Design Portfolio">
+                    </div>
+                    <div class="project-content">
+                        <h3>Design Portfolio</h3>
+                        <p>A collection of visual design projects showcasing branding, typography, and digital art.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Photoshop</span>
+                            <span class="project-tag">Illustrator</span>
+                            <span class="project-tag">Branding</span>
+                        </div>
+                        <a href="portfolio/design.html" class="btn btn-primary">View Portfolio</a>
                     </div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-date">2011-2015</div>
-                    <div class="timeline-content right">
-                        <h3>Sat Telecommunication Limited</h3>
-                        <p>Technical Specialist</p>
-                        <p>Implemented technical solutions, managed communication systems, and provided technical support for telecommunications infrastructure.</p>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1015&q=80" alt="Tech Projects">
+                    </div>
+                    <div class="project-content">
+                        <h3>Technical Projects</h3>
+                        <p>Web development, Python scripts, and technical solutions for various challenges.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Web Dev</span>
+                            <span class="project-tag">Automation</span>
+                        </div>
+                        <a href="portfolio/tech.html" class="btn btn-primary">View Projects</a>
                     </div>
                 </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="Blog">
+                    </div>
+                    <div class="project-content">
+                        <h3>Design & Tech Blog</h3>
+                        <p>Articles, tutorials, and insights on design principles and technical implementation.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Tutorials</span>
+                            <span class="project-tag">Insights</span>
+                            <span class="project-tag">Resources</span>
+                        </div>
+                        <a href="blog.html" class="btn btn-primary">Read Blog</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kalinago Territory Section -->
+    <section id="kalinago" class="kalinago-section">
+        <div class="container">
+            <h2>Kalinago Territory Initiative</h2>
+            <div class="kalinago-container">
+                <div class="kalinago-content">
+                    <p>A descendant's digital contribution to preserving and honoring Kalinago heritage and culture.</p>
+                    <p>The Kalinago, once known as Caribs, are the Indigenous people of the Lesser Antilles. The Kalinago Territory in Dominica remains one of the few legally recognized Indigenous communities in the Caribbean.</p>
+                    
+                    <h3>Cultural Preservation Goals:</h3>
+                    <ul class="kalinago-features">
+                        <li>Document Kalinago language, traditions, and history</li>
+                        <li>Create digital archive of cultural artifacts</li>
+                        <li>Develop educational resources for schools</li>
+                        <li>Support community economic development</li>
+                        <li>Promote Kalinago arts and crafts globally</li>
+                    </ul>
+                    
+                    <div style="margin-top: 2rem;">
+                        <a href="kalinago.html" class="btn btn-primary">Explore Kalinago Heritage</a>
+                    </div>
+                </div>
+                <div class="kalinago-image">
+                    <img src="https://images.unsplash.com/photo-1517638851339-a711cfcf3279?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="Kalinago Culture">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GreyWolf Project Section -->
+    <section id="greywolf" class="greywolf-section">
+        <div class="container">
+            <h2>GreyWolf Project</h2>
+            <div class="greywolf-container">
+                <div class="greywolf-image">
+                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="GreyWolf Project">
+                </div>
+                <div class="greywolf-content">
+                    <h3>Automated Reconnaissance Framework</h3>
+                    <p>GreyWolf is a modular bug bounty recon framework tailored for automated API and web asset discovery. It integrates tools like Kiterunner, nuclei, ffuf, and others, and is built for extensibility.</p>
+                    
+                    <h4>Key Features:</h4>
+                    <ul class="greywolf-features">
+                        <li>Subdomain Enumeration (AssetFinder, Amass)</li>
+                        <li>Advanced Fuzzing with custom wordlists</li>
+                        <li>API Discovery and Testing</li>
+                        <li>Vulnerability Scanning (nuclei)</li>
+                        <li>Modular Architecture for easy extension</li>
+                    </ul>
+                    
+                    <div style="margin-top: 2rem;">
+                        <a href="greywolf.html" class="btn btn-primary">View Project Details</a>
+                        <a href="https://github.com/OnanT/greywolf" class="btn btn-secondary" target="_blank">GitHub Repository</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donation Section -->
+    <section id="donate" class="donation-section">
+        <div class="container">
+            <h2>Support Our Initiatives</h2>
+            <p>Your contributions help fund development of open-source projects and cultural initiatives.</p>
+            
+            <div class="donation-options">
+                <div class="donation-card">
+                    <h3>Kalinago Education</h3>
+                    <div class="price">$75</div>
+                    <p>Supply laptops to schools in Kalinago Territory</p>
+                    <a href="#" class="btn btn-primary">Donate</a>
+                </div>
+                
+                <div class="donation-card">
+                    <h3>Family Gift Basket</h3>
+                    <div class="price">$50</div>
+                    <p>Support a Kalinago family with essential supplies</p>
+                    <a href="#" class="btn btn-primary">Donate</a>
+                </div>
+                
+                <div class="donation-card">
+                    <h3>Kalinago Premier League</h3>
+                    <div class="price">$100</div>
+                    <p>Sponsor prizes for most runs in KPL</p>
+                    <a href="#" class="btn btn-primary">Donate</a>
+                </div>
+                
+                <div class="donation-card">
+                    <h3>Scholarship Fund</h3>
+                    <div class="price">$250</div>
+                    <p>Sponsor a scholarship for one semester</p>
+                    <a href="#" class="btn btn-primary">Donate</a>
+                </div>
+            </div>
+            
+            <div style="margin-top: 2rem;">
+                <!-- PayPal Single Button -->
+                <style>.pp-HUKN574ZQNUYC{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;}</style>
+                <form action="https://www.paypal.com/ncp/payment/HUKN574ZQNUYC" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;">
+                  <input class="pp-HUKN574ZQNUYC" type="submit" value="Donate with PayPal" />
+                  <img src=https://www.paypalobjects.com/images/Debit_Credit.svg alt="cards" />
+                  <section style="font-size: 0.75rem;"> Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
+                </form>
             </div>
         </div>
     </section>
@@ -625,18 +1000,18 @@
                 <a href="https://github.com/OnanT" class="social-link" target="_blank">
                     <i class="fab fa-github"></i>
                 </a>
-                <a href="#" class="social-link">
+                <a href="https://www.linkedin.com/in/onan-thomas/" class="social-link" target="_blank">
                     <i class="fab fa-linkedin-in"></i>
                 </a>
-                <a href="#" class="social-link">
+                <a href="https://twitter.com/Dr_Cokes" class="social-link" target="_blank">
                     <i class="fab fa-twitter"></i>
                 </a>
-                <a href="mailto:contact@onan.shop" class="social-link">
+                <a href="mailto:onan.thomas.08@gmail.com" class="social-link">
                     <i class="fas fa-envelope"></i>
                 </a>
             </div>
             
-            <a href="Contactme.html" class="btn btn-primary">Send a Message</a>
+            <a href="contact.html" class="btn btn-primary">Send a Message</a>
         </div>
     </section>
 
