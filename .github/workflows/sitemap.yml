@@ -1,0 +1,41 @@
+name: Generate Sitemap
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Sitemap Generator
+        run: npm install -g sitemap-generator-cli
+
+      - name: Generate Sitemap
+        run: |
+          mkdir -p public
+          sitemap-generator https://onan.shop \
+            --filepath ./sitemap.xml \
+            --strip-querystring \
+            --max-depth 3
+
+      - name: Commit Sitemap
+        run: |
+          git config user.name "Onan Bot"
+          git config user.email "onan-bot@users.noreply.github.com"
+          git add sitemap.xml
+          git commit -m "🗺️ Auto-update sitemap.xml"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
