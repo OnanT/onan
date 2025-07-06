@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | Onan Thomas</title>
+    <link rel="icon" href="assets/images/favicon.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Brand Color Variables */
+        :root {
+            --primary-green: #2ba745;
+            --secondary-blue: #007bff;
+            --neutral-gray: #6c757d;
+            --accent-teal: #17a2b8;
+            --light-gray: #f8f9fa;
+            --dark-gray: #343a40;
+            --terminal-green: #32cd32;
+        }
+        
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #ffffff;
+            color: var(--neutral-gray);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            color: var(--dark-gray);
+            font-weight: 700;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin: 2rem 0 1rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary-green);
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--dark-gray) 0%, var(--neutral-gray) 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white;
+        }
+        
+        .logo span {
+            color: var(--primary-green);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-green);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .tagline {
+            display: inline-block;
+            background: rgba(43, 167, 69, 0.2);
+            border-left: 3px solid var(--primary-green);
+            padding: 0.5rem 1rem;
+            font-style: italic;
+            margin: 1rem 0;
+        }
+        
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: var(--primary-green);
+            color: white;
+            border: 2px solid var(--primary-green);
+        }
+        
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--primary-green);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-secondary:hover {
+            background: white;
+            color: var(--dark-gray);
+        }
+        
+        /* Services Section */
+        .services-section {
+            padding: 5rem 0;
+            background: white;
+        }
+        
+        .services-intro {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            text-align: center;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            padding: 2.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border-top: 4px solid var(--primary-green);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+        
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--primary-green);
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-title {
+            font-size: 1.5rem;
+            color: var(--dark-gray);
+            margin-bottom: 1rem;
+        }
+        
+        .service-features {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+        
+        .service-features li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .service-features li:before {
+            content: '✓';
+            color: var(--primary-green);
+            font-weight: bold;
+            margin-right: 0.8rem;
+            font-size: 1.2rem;
+        }
+        
+        /* Process Section */
+        .process-section {
+            padding: 5rem 0;
+            background: var(--light-gray);
+        }
+        
+        .process-steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .process-step {
+            flex: 1;
+            min-width: 250px;
+            max-width: 350px;
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+            text-align: center;
+        }
+        
+        .step-number {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            background: var(--primary-green);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .process-step h3 {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            color: var(--primary-green);
+        }
+        
+        /* Testimonials */
+        .testimonials-section {
+            padding: 5rem 0;
+            background: white;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .testimonial-card {
+            background: var(--light-gray);
+            border-radius: 8px;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .testimonial-card:before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 4rem;
+            color: rgba(43, 167, 69, 0.1);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+        
+        .testimonial-text {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary-green);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-right: 1rem;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--dark-gray) 0%, #2c3e50 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            color: white;
+        }
+        
+        .cta-section h2:after {
+            background: var(--accent-teal);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark-gray);
+            color: rgba(255, 255, 255, 0.7);
+            text-align: center;
+            padding: 2rem 0;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .process-steps {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/68696f0ef43c32191920b870/1ivdtjkoi';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">onan<span>.thomas</span></div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="skills.html">Skills</a></li>
+                    <li><a href="resume.html">Resume</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="kalinago.html">Kalinago</a></li>
+                    <li><a href="greywolf.html">GreyWolf</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Professional Services</h1>
+                <p class="tagline">Comprehensive solutions tailored to your needs</p>
+                <p>I offer a diverse range of services across design, development, and technical consulting</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <div class="container">
+            <div class="services-intro">
+                <h2>My Service Offerings</h2>
+                <p>With expertise across multiple domains, I provide comprehensive solutions to meet your business and technical challenges.</p>
+            </div>
+            
+            <div class="services-grid">
+                <!-- Design & UX Services -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3 class="service-title">Design & UX Services</h3>
+                    <p>Creating visually compelling experiences that engage users and communicate your brand effectively.</p>
+                    
+                    <ul class="service-features">
+                        <li>UI/UX Design & Prototyping</li>
+                        <li>Brand Identity Development</li>
+                        <li>Marketing Material Design</li>
+                        <li>Video Production & Editing</li>
+                        <li>Infographic & Data Visualization</li>
+                    </ul>
+                    
+                    <a href="contact.html" class="btn btn-primary">Request Design Services</a>
+                </div>
+                
+                <!-- Development & API -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="service-title">Development & API Integration</h3>
+                    <p>Building robust technical solutions and seamless integrations to power your business.</p>
+                    
+                    <ul class="service-features">
+                        <li>Custom Web Application Development</li>
+                        <li>API Integration & Development</li>
+                        <li>Python Scripting & Automation</li>
+                        <li>AAPI Implementation</li>
+                        <li>Database Design & Optimization</li>
+                    </ul>
+                    
+                    <a href="contact.html" class="btn btn-primary">Discuss Development Needs</a>
+                </div>
+                
+                <!-- Temenos Solutions -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3 class="service-title">Temenos Solutions</h3>
+                    <p>Specialized expertise in Temenos products to optimize your financial systems.</p>
+                    
+                    <ul class="service-features">
+                        <li>Temenos Project Infinity Management</li>
+                        <li>Temenos Transact Implementation</li>
+                        <li>Infinity Functional Consulting</li>
+                        <li>System Integration & Migration</li>
+                        <li>Customization & Workflow Design</li>
+                    </ul>
+                    
+                    <a href="contact.html" class="btn btn-primary">Inquire About Temenos</a>
+                </div>
+                
+                <!-- Security Services -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="service-title">Security Services</h3>
+                    <p>Protecting your digital assets and infrastructure from emerging threats.</p>
+                    
+                    <ul class="service-features">
+                        <li>Bug Bounty Hunting & Vulnerability Research</li>
+                        <li>API Security Testing</li>
+                        <li>Penetration Testing</li>
+                        <li>Security Audit & Assessment</li>
+                        <li>Security Awareness Training</li>
+                    </ul>
+                    
+                    <a href="contact.html" class="btn btn-primary">Request Security Audit</a>
+                </div>
+                
+                <!-- Support Services -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3 class="service-title">Technical Support</h3>
+                    <p>Reliable support solutions to keep your systems running smoothly.</p>
+                    
+                    <ul class="service-features">
+                        <li>Help Desk Support</li>
+                        <li>Technical Customer Support</li>
+                        <li>System Troubleshooting</li>
+                        <li>User Training & Documentation</li>
+                        <li>Ongoing Maintenance & Monitoring</li>
+                    </ul>
+                    
+                    <a href="contact.html" class="btn btn-primary">Get Support</a>
+                </div>
+                
+                <!-- Consulting -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="service-title">Business Consulting</h3>
+                    <p>Strategic guidance to align technology with your business objectives.</p>
+                    
+                    <ul class="service-features">
+                        <li>Business Analysis (UX Focus)</li>
+                        <li>Technology Roadmapping</li>
+                        <li>Process Optimization</li>
+                        <li>Solution Architecture Design</li>
+                        <li>Digital Transformation Strategy</li>
+                    </ul>
+                    
+                    <a href="contact.html" class="btn btn-primary">Schedule Consultation</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="container">
+            <h2 style="text-align: center;">My Working Process</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 2rem;">A structured approach to ensure successful project delivery and client satisfaction</p>
+            
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Discovery & Consultation</h3>
+                    <p>Understanding your requirements, goals, and challenges through detailed discussions.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>Planning & Proposal</h3>
+                    <p>Developing a comprehensive plan with timelines, deliverables, and cost estimates.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>Execution & Development</h3>
+                    <p>Implementing the solution with regular progress updates and feedback sessions.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3>Testing & Refinement</h3>
+                    <p>Rigorous testing and refinement to ensure quality and meet specifications.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">5</div>
+                    <h3>Delivery & Support</h3>
+                    <p>Final delivery, training, and ongoing support to ensure continued success.</p>
+                </div>
+            </div>
+        </

@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume | Onan Thomas</title>
+    <link rel="icon" href="assets/images/favicon.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Brand Color Variables */
+        :root {
+            --primary-green: #2ba745;
+            --secondary-blue: #007bff;
+            --neutral-gray: #6c757d;
+            --accent-teal: #17a2b8;
+            --light-gray: #f8f9fa;
+            --dark-gray: #343a40;
+            --terminal-green: #32cd32;
+        }
+        
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #ffffff;
+            color: var(--neutral-gray);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            color: var(--dark-gray);
+            font-weight: 700;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin: 2rem 0 1rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary-green);
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--dark-gray) 0%, var(--neutral-gray) 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white;
+        }
+        
+        .logo span {
+            color: var(--primary-green);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-green);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .tagline {
+            display: inline-block;
+            background: rgba(43, 167, 69, 0.2);
+            border-left: 3px solid var(--primary-green);
+            padding: 0.5rem 1rem;
+            font-style: italic;
+            margin: 1rem 0;
+        }
+        
+        /* Resume Section */
+        .resume-section {
+            padding: 5rem 0;
+            background: white;
+        }
+        
+        .resume-container {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 3rem;
+        }
+        
+        .resume-sidebar {
+            background: var(--light-gray);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            height: fit-content;
+        }
+        
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 1.5rem;
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .contact-info {
+            margin: 1.5rem 0;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-icon {
+            width: 24px;
+            margin-right: 10px;
+            color: var(--primary-green);
+        }
+        
+        .skills-category {
+            margin-bottom: 1.5rem;
+        }
+        
+        .skills-category h4 {
+            color: var(--primary-green);
+            margin-bottom: 0.5rem;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 0.3rem;
+        }
+        
+        .skill-tag {
+            display: inline-block;
+            background: white;
+            color: var(--dark-gray);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin: 0.3rem;
+            border: 1px solid #ddd;
+        }
+        
+        .resume-main {
+            padding: 0 1rem;
+        }
+        
+        .resume-section-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .resume-section-title i {
+            color: var(--primary-green);
+            margin-right: 0.8rem;
+            font-size: 1.5rem;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 2rem;
+            border-left: 2px solid var(--primary-green);
+        }
+        
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 0;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary-green);
+        }
+        
+        .timeline-date {
+            background: rgba(43, 167, 69, 0.1);
+            color: var(--dark-gray);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .timeline-content h3 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .company {
+            color: var(--secondary-blue);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .download-resume {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #eee;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+        }
+        
+        .btn-primary {
+            background: var(--primary-green);
+            color: white;
+            border: 2px solid var(--primary-green);
+        }
+        
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--primary-green);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-green);
+            border: 2px solid var(--primary-green);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--primary-green);
+            color: white;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark-gray);
+            color: rgba(255, 255, 255, 0.7);
+            text-align: center;
+            padding: 2rem 0;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .resume-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .resume-sidebar {
+                max-width: 500px;
+                margin: 0 auto;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">onan<span>.thomas</span></div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="skills.html">Skills</a></li>
+                    <li><a href="resume.html">Resume</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="kalinago.html">Kalinago</a></li>
+                    <li><a href="greywolf.html">GreyWolf</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Professional Resume</h1>
+                <p class="tagline">A comprehensive overview of my qualifications and experience</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section class="resume-section">
+        <div class="container">
+            <div class="resume-container">
+                <!-- Sidebar -->
+                <div class="resume-sidebar">
+                    <div class="profile-img">
+                        <img src="/assets/images/profile/onan-profile.jpg" alt="Onan Thomas">
+                    </div>
+                    
+                    <h2>Onan Thomas</h2>
+                    <p>Visual Designer & Technology Specialist</p>
+                    
+                    <div class="contact-info">
+                        <h3>Contact</h3>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <p>onanthomas@proton.me</p>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <p>+1 (767) 661-4248</p>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <p>Roseau, Dominica</p>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <p>github.com/OnanT</p>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fab fa-linkedin-in"></i>
+                            </div>
+                            <p>linkedin.com/in/onan-thomas</p>
+                        </div>
+                    </div>
+                    
+                    <div class="skills-category">
+                        <h4>Design & UX Skills</h4>
+                        <div>
+                            <span class="skill-tag">Adobe Photoshop</span>
+                            <span class="skill-tag">Adobe Premiere Pro</span>
+                            <span class="skill-tag">UI/UX Design</span>
+                            <span class="skill-tag">Brand Identity</span>
+                            <span class="skill-tag">Typography</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skills-category">
+                        <h4>Technical Skills</h4>
+                        <div>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">HTML5/CSS3</span>
+                            <span class="skill-tag">API Integration</span>
+                            <span class="skill-tag">Bug Bounty</span>
+                            <span class="skill-tag">API Testing</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skills-category">
+                        <h4>Temenos Expertise</h4>
+                        <div>
+                            <span class="skill-tag">Project Infinity</span>
+                            <span class="skill-tag">AAPI Integration</span>
+                            <span class="skill-tag">Transact Functional</span>
+                            <span class="skill-tag">Infinity Functional</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skills-category">
+                        <h4>Support Skills</h4>
+                        <div>
+                            <span class="skill-tag">Help Desk</span>
+                            <span class="skill-tag">Customer Support</span>
+                            <span class="skill-tag">BA UX</span>
+                            <span class="skill-tag">Technical Support</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skills-category">
+                        <h4>Certifications</h4>
+                        <div>
+                            <span class="skill-tag">Temenos Transact Functional Associate</span>
+                            <span class="skill-tag">Temenos Infinity Functional Associate</span>
+                            <span class="skill-tag">Python Programming Certification</span>
+                            <span class="skill-tag">API Security Specialist</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Main Content -->
+                <div class="resume-main">
+                    <div class="resume-section-title">
+                        <i class="fas fa-user"></i>
+                        <h2>Professional Summary</h2>
+                    </div>
+                    <p>Versatile technology professional with expertise spanning visual design, API integration, Temenos solutions, and security testing. Proven ability to bridge creative design with technical implementation to deliver comprehensive solutions. Passionate about preserving cultural heritage through technology and developing open-source security tools.</p>
+                    
+                    <div class="resume-section-title">
+                        <i class="fas fa-briefcase"></i>
+                        <h2>Work Experience</h2>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <span class="timeline-date">2021 - Present</span>
+                        <div class="timeline-content">
+                            <h3>Technology Specialist & Designer</h3>
+                            <span class="company">Freelance / Contract</span>
+                            <ul>
+                                <li>Developed GreyWolf, an open-source reconnaissance framework for bug bounty hunters</li>
+                                <li>Created digital preservation platform for Kalinago cultural heritage</li>
+                                <li>Designed and implemented UI/UX solutions for financial technology clients</li>
+                                <li>Conducted API security testing and vulnerability assessments</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <span class="timeline-date">2019 - 2021</span>
+                        <div class="timeline-content">
+                            <h3>Temenos Solutions Consultant</h3>
+                            <span class="company">Financial Technology Partners</span>
+                            <ul>
+                                <li>Managed Temenos Project Infinity implementations for banking clients</li>
+                                <li>Specialized in AAPI integration and customization</li>
+                                <li>Conducted functional analysis and requirements gathering</li>
+                                <li>Developed user training materials and documentation</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <span class="timeline-date">2017 - 2019</span>
+                        <div class="timeline-content">
+                            <h3>Technical Support Specialist</h3>
+                            <span class="company">TechSupport Solutions Inc.</span>
+                            <ul>
+                                <li>Provided tier 2-3 technical support for enterprise clients</li>
+                                <li>Managed help desk operations and ticket resolution</li>
+                                <li>Developed knowledge base resources and training materials</li>
+                                <li>Implemented customer satisfaction improvements increasing CSAT by 32%</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="resume-section-title">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h2>Education</h2>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <span class="timeline-date">2013 - 2017</span>
+                        <div class="timeline-content">
+                            <h3>BSc in Computer Science</h3>
+                            <span class="company">University of Technology</span>
+                            <p>Specialized in software development and information security</p>
+                        </div>
+                    </div>
+                    
+                    <div class="resume-section-title">
+                        <i class="fas fa-star"></i>
+                        <h2>Key Projects</h2>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3>GreyWolf Framework</h3>
+                            <ul>
+                                <li>Open-source reconnaissance framework for bug bounty hunters</li>
+                                <li>Integrates 10+ security tools into automated workflow</li>
+                                <li>Featured in security conferences and developer communities</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3>Kalinago Territory Initiative</h3>
+                            <ul>
+                                <li>Digital preservation of indigenous Kalinago heritage</li>
+                                <li>Interactive cultural map and language resources</li>
+                                <li>Community empowerment through technology education</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="download-resume">
+                        <a href="path/to/onan-thomas-resume.pdf" class="btn btn-primary" download>
+                            <i class="fas fa-download"></i> Download PDF Resume
+                        </a>
+                        <a href="contact.html" class="btn btn-secondary">
+                            <i class="fas fa-paper-plane"></i> Contact Me
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Onan Thomas. All rights reserved.</p>
+            <p>Designed with <span style="color: var(--primary-green);">♥</span> and the original spectrum</p>
+        </div>
+    </footer>
+</body>
+</html>

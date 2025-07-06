@@ -1,576 +1,587 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kalinago Territory | Onan Thomas</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-    <style>
-        /* Brand Color Variables */
-        :root {
-            --primary-green: #2ba745;
-            --secondary-blue: #007bff;
-            --neutral-gray: #6c757d;
-            --accent-teal: #17a2b8;
-            --light-gray: #f8f9fa;
-            --dark-gray: #343a40;
-        }
-        
-        /* Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background-color: #ffffff;
-            color: var(--neutral-gray);
-            line-height: 1.6;
-        }
-        
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-        
-        h1, h2, h3, h4, h5 {
-            color: var(--dark-gray);
-            font-weight: 700;
-        }
-        
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        h2 {
-            font-size: 2rem;
-            margin: 2rem 0 1rem;
-            position: relative;
-            padding-bottom: 0.5rem;
-        }
-        
-        h2:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background: var(--primary-green);
-        }
-        
-        /* Header Styles */
-        header {
-            background: linear-gradient(135deg, var(--dark-gray) 0%, var(--neutral-gray) 100%);
-            color: white;
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: white;
-        }
-        
-        .logo span {
-            color: var(--primary-green);
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-        
-        .nav-links li {
-            margin-left: 1.5rem;
-        }
-        
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-        
-        .nav-links a:hover {
-            color: var(--primary-green);
-        }
-        
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('assets/images/hero/kalinago-banner.jpg');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 5rem 0;
-            text-align: center;
-        }
-        
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .hero h1 {
-            color: white;
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .tagline {
-            display: inline-block;
-            background: rgba(43, 167, 69, 0.2);
-            border-left: 3px solid var(--primary-green);
-            padding: 0.5rem 1rem;
-            font-style: italic;
-            margin: 1rem 0;
-        }
-        
-        /* Button Styles */
-        .btn {
-            display: inline-block;
-            padding: 0.8rem 1.8rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            margin: 0.5rem;
-        }
-        
-        .btn-primary {
-            background: var(--primary-green);
-            color: white;
-            border: 2px solid var(--primary-green);
-        }
-        
-        .btn-primary:hover {
-            background: transparent;
-            color: var(--primary-green);
-        }
-        
-        .btn-secondary {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-        }
-        
-        .btn-secondary:hover {
-            background: white;
-            color: var(--dark-gray);
-        }
-        
-        /* Content Sections */
-        .section {
-            padding: 5rem 0;
-        }
-        
-        .section-light {
-            background: white;
-        }
-        
-        .section-gray {
-            background: var(--light-gray);
-        }
-        
-        /* Map Section */
-        #kalinago-map {
-            height: 500px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            margin-top: 2rem;
-        }
-        
-        /* Table Styles */
-        .infographic-table {
-            width: 100%;
-            max-width: 500px;
-            margin: 1rem auto;
-            border-collapse: collapse;
-            box-shadow: 0 0 10px rgba(0,0,0,0.05);
-        }
-        
-        .infographic-table th,
-        .infographic-table td {
-            padding: 1rem;
-            text-align: left;
-            border-bottom: 1px solid #ccc;
-        }
-        
-        .infographic-table th {
-            background-color: var(--primary-green);
-            color: white;
-        }
-        
-        /* Gallery Styles */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-        
-        .gallery-grid img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            transition: transform 0.2s ease-in-out;
-        }
-        
-        .gallery-grid img:hover {
-            transform: scale(1.05);
-        }
-        
-        /* Video Styles */
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-        
-        .video-grid iframe {
-            width: 100%;
-            height: 200px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        
-        .video-scroll-container {
-            display: flex;
-            overflow-x: auto;
-            gap: 1rem;
-            padding: 1rem 0;
-            scrollbar-width: thin;
-        }
-        
-        .video-scroll-container iframe {
-            min-width: 300px;
-            height: 170px;
-            flex-shrink: 0;
-            border-radius: 10px;
-        }
-        
-        /* Donation Section */
-        .donation-options {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        
-        .donation-card {
-            background: var(--light-gray);
-            padding: 1.5rem;
-            border-radius: 8px;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-        
-        .donation-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .donation-card h3 {
-            color: var(--primary-green);
-            margin-bottom: 1rem;
-        }
-        
-        .donation-card .price {
-            font-size: 2rem;
-            font-weight: bold;
-            color: var(--dark-gray);
-            margin: 1rem 0;
-        }
-        
-        /* Footer */
-        footer {
-            background: var(--dark-gray);
-            color: rgba(255, 255, 255, 0.7);
-            text-align: center;
-            padding: 2rem 0;
-            font-size: 0.9rem;
-        }
-        
-        footer a {
-            color: white;
-            text-decoration: none;
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kalinago Territory | Onan Thomas</title>
+  <link rel="icon" href="assets/images/favicon.png" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    /* Brand Color Variables */
+    :root {
+      --primary-green: #2ba745;
+      --secondary-blue: #007bff;
+      --neutral-gray: #6c757d;
+      --accent-teal: #17a2b8;
+      --light-gray: #f8f9fa;
+      --dark-gray: #343a40;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background-color: #ffffff;
+      color: var(--neutral-gray);
+      line-height: 1.6;
+    }
+    
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+    
+    h1, h2, h3, h4, h5 {
+      color: var(--dark-gray);
+      font-weight: 700;
+    }
+    
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    h2 {
+      font-size: 2rem;
+      margin: 2rem 0 1rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+    
+    h2:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: var(--primary-green);
+    }
+    
+    /* Header Styles */
+    header {
+      background: linear-gradient(135deg, var(--dark-gray) 0%, var(--neutral-gray) 100%);
+      color: white;
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: white;
+    }
+    
+    .logo span {
+      color: var(--primary-green);
+    }
+    
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+    
+    .nav-links li {
+      margin-left: 1.5rem;
+    }
+    
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+    
+    .nav-links a:hover {
+      color: var(--primary-green);
+    }
+    
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/assets/images/hero/kalinago-aute.jpg');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 5rem 0;
+      text-align: center;
+    }
+    
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .hero h1 {
+      color: white;
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .tagline {
+      display: inline-block;
+      background: rgba(43, 167, 69, 0.2);
+      border-left: 3px solid var(--primary-green);
+      padding: 0.5rem 1rem;
+      font-style: italic;
+      margin: 1rem 0;
+    }
+    
+    /* Button Styles */
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 1.8rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      margin: 0.5rem;
+    }
+    
+    .btn-primary {
+      background: var(--primary-green);
+      color: white;
+      border: 2px solid var(--primary-green);
+    }
+    
+    .btn-primary:hover {
+      background: transparent;
+      color: var(--primary-green);
+    }
+    
+    /* Content Sections */
+    .section {
+      padding: 5rem 0;
+    }
+    
+    .section-light {
+      background: white;
+    }
+    
+    .section-gray {
+      background: var(--light-gray);
+    }
+    
+    /* Map Section */
+    #map {
+      height: 500px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      margin-top: 2rem;
+    }
+    
+    /* Table Styles */
+    .infographic-table {
+      width: 100%;
+      max-width: 500px;
+      margin: 1rem auto;
+      border-collapse: collapse;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    
+    .infographic-table th,
+    .infographic-table td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid #ccc;
+    }
+    
+    .infographic-table th {
+      background-color: var(--primary-green);
+      color: white;
+    }
+    
+    /* Gallery Styles */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    
+    .gallery-grid img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease-in-out;
+    }
+    
+    .gallery-grid img:hover {
+      transform: scale(1.05);
+    }
+    
+    /* Video Styles */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    
+    .video-grid iframe {
+      width: 100%;
+      height: 200px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    
+    .video-scroll-container {
+      display: flex;
+      overflow-x: auto;
+      gap: 1rem;
+      padding: 1rem 0;
+      scrollbar-width: thin;
+    }
+    
+    .video-scroll-container iframe {
+      min-width: 300px;
+      height: 170px;
+      flex-shrink: 0;
+      border-radius: 10px;
+    }
+    
+    /* Donation Section */
+    .donation-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .donation-card {
+      background: var(--light-gray);
+      padding: 1.5rem;
+      border-radius: 8px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    
+    .donation-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .donation-card h3 {
+      color: var(--primary-green);
+      margin-bottom: 1rem;
+    }
+    
+    .donation-card .price {
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--dark-gray);
+      margin: 1rem 0;
+    }
+    
+    /* Footer */
+    footer {
+      background: var(--dark-gray);
+      color: rgba(255, 255, 255, 0.7);
+      text-align: center;
+      padding: 2rem 0;
+      font-size: 0.9rem;
+    }
+    
+    footer a {
+      color: white;
+      text-decoration: none;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+    }
+  </style>
 </head>
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/68696f0ef43c32191920b870/1ivdtjkoi';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
 <body>
-    <!-- Header -->
+
+  <!-- Header -->
     <header>
         <div class="container">
             <nav>
-                <div class="logo">onan<span>.tech</span></div>
+                <div class="logo">onan<span>.thomas</span></div>
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="index.html#about">About</a></li>
-                    <li><a href="index.html#projects">Projects</a></li>
-                    <li><a href="index.html#kalinago">Kalinago</a></li>
-                    <li><a href="index.html#greywolf">GreyWolf</a></li>
-                    <li><a href="index.html#donate">Donate</a></li>
-                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="skills.html">Skills</a></li>
+                    <li><a href="resume.html">Resume</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="kalinago.html">Kalinago</a></li>
+                    <li><a href="greywolf.html">GreyWolf</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Kalinago Territory</h1>
-                <p class="tagline">A descendant's digital contribution to a living culture</p>
-            </div>
-        </div>
-    </section>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Kalinago Territory</h1>
+        <p class="tagline">A descendant's digital contribution to a living culture</p>
+      </div>
+    </div>
+  </section>
 
-    <!-- Respectful Acknowledgment -->
-    <section class="section section-light">
-        <div class="container">
-            <h2>Respectful Acknowledgment</h2>
-            <p>This page is created by <strong>Onan Thomas</strong>, a <em>descendant of the Kalinago people</em> of Dominica. It does not speak on behalf of the Kalinago Council, Elders, or community. Instead, it is a personal, cultural, and technological offering to preserve and honor our legacy.</p>
-        </div>
-    </section>
+  <!-- Respectful Acknowledgment -->
+  <section class="section section-light">
+    <div class="container">
+      <h2>Respectful Acknowledgment</h2>
+      <p>This page is created by <strong>Onan Thomas</strong>, a <em>descendant of the Kalinago people</em> of Dominica. It does not speak on behalf of the Kalinago Council, Elders, or community. Instead, it is a personal, cultural, and technological offering to preserve and honor our legacy.</p>
+    </div>
+  </section>
 
-    <!-- Who Are the Kalinago? -->
-    <section class="section section-gray">
-        <div class="container">
-            <h2>Who Are the Kalinago?</h2>
-            <p>The Kalinago, once known as Caribs, are the Indigenous people of the Lesser Antilles. The Kalinago Territory in Dominica remains one of the few legally recognized Indigenous communities in the Caribbean. We maintain language, craft, and connection to land despite colonization and modern pressures.</p>
-            
-            <div class="gallery-grid" style="margin-top: 2rem;">
-                <img src="assets/images/gallery/kalinago-culture-1.jpg" alt="Kalinago Craftsmanship">
-                <img src="assets/images/gallery/kalinago-culture-2.jpg" alt="Traditional Dance">
-                <img src="assets/images/gallery/kalinago-culture-3.jpg" alt="Community Gathering">
-                <img src="assets/images/gallery/kalinago-culture-4.jpg" alt="Cultural Artifacts">
-            </div>
-        </div>
-    </section>
+  <!-- Who Are the Kalinago? -->
+  <section class="section section-gray">
+    <div class="container">
+      <h2>Who Are the Kalinago?</h2>
+      <p>The Kalinago, once known as Caribs, are the Indigenous people of the Lesser Antilles. The Kalinago Territory in Dominica remains one of the few legally recognized Indigenous communities in the Caribbean. We maintain language, craft, and connection to land despite colonization and modern pressures.</p>
+      
+      <div class="gallery-grid" style="margin-top: 2rem;">
+        <img src="assets/images/gallery/kalinago-culture-1.jpg" alt="Kalinago Craftsmanship">
+        <img src="assets/images/gallery/kalinago-culture-2.jpg" alt="Traditional Dance">
+        <img src="assets/images/gallery/kalinago-culture-3.jpg" alt="Community Gathering">
+        <img src="assets/images/gallery/kalinago-culture-4.jpg" alt="Cultural Artifacts">
+      </div>
+    </div>
+  </section>
 
-    <!-- Interactive Map -->
-    <section class="section section-light">
-        <div class="container">
-            <h2>Interactive Kalinago Territory Map</h2>
-            <p>Explore key cultural and natural landmarks within the Kalinago Territory.</p>
-            <div id="kalinago-map"></div>
-        </div>
-    </section>
+  <!-- Interactive Map -->
+  <section class="section section-light">
+    <div class="container">
+      <h2>Interactive Kalinago Territory Map</h2>
+      <p>Explore key cultural and natural landmarks within the Kalinago Territory.</p>
+      <div id="map"></div>
+    </div>
+  </section>
 
-    <!-- Kalinago Words -->
-    <section class="section section-gray">
-        <div class="container">
-            <h2>Kalinago Words You Should Know</h2>
-            <table class="infographic-table">
-                <thead>
-                    <tr><th>English</th><th>Kalinago (Karifuna)</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td>Hello</td><td>Iréi</td></tr>
-                    <tr><td>Thank you</td><td>Wálibá</td></tr>
-                    <tr><td>Water</td><td>Túna</td></tr>
-                    <tr><td>House</td><td>Karbey</td></tr>
-                    <tr><td>Child</td><td>Kiyá</td></tr>
-                    <tr><td>Land</td><td>Balú</td></tr>
-                    <tr><td>Food</td><td>Káli</td></tr>
-                    <tr><td>Friend</td><td>Kátu</td></tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
+  <!-- Kalinago Words -->
+  <section class="section section-gray">
+    <div class="container">
+      <h2>Kalinago Words You Should Know</h2>
+      <table class="infographic-table">
+        <thead>
+          <tr><th>English</th><th>Kalinago (Karifuna)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Hello</td><td>Iréi</td></tr>
+          <tr><td>Thank you</td><td>Wálibá</td></tr>
+          <tr><td>Water</td><td>Túna</td></tr>
+          <tr><td>House</td><td>Karbey</td></tr>
+          <tr><td>Child</td><td>Kiyá</td></tr>
+          <tr><td>Land</td><td>Balú</td></tr>
+          <tr><td>Food</td><td>Káli</td></tr>
+          <tr><td>Friend</td><td>Kátu</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
 
-    <!-- Community Gallery -->
-    <section class="section section-light">
-        <div class="container">
-            <h2>Community Gallery</h2>
-            <p>Photos of crafts, nature, faces, and tradition from the Kalinago Territory.</p>
-            <div class="gallery-grid">
-                <img src="assets/images/gallery/kalinago-craft-1.jpg" alt="Traditional Basket">
-                <img src="assets/images/gallery/kalinago-nature-1.jpg" alt="River Path">
-                <img src="assets/images/gallery/kalinago-center.jpg" alt="Kalinago Craft Center">
-                <img src="assets/images/gallery/kalinago-event-1.jpg" alt="Cultural Event">
-                <img src="assets/images/gallery/kalinago-craft-2.jpg" alt="Pottery Making">
-                <img src="assets/images/gallery/kalinago-nature-2.jpg" alt="Coastal View">
-                <img src="assets/images/gallery/kalinago-people-1.jpg" alt="Community Members">
-                <img src="assets/images/gallery/kalinago-event-2.jpg" alt="Festival Celebration">
-            </div>
-        </div>
-    </section>
+  <!-- Community Gallery -->
+  <section class="section section-light">
+    <div class="container">
+      <h2>Community Gallery</h2>
+      <p>Photos of crafts, nature, faces, and tradition from the Kalinago Territory.</p>
+      <div class="gallery-grid">
+        <img src="assets/images/gallery/kalinago-craft-1.jpg" alt="Traditional Basket">
+        <img src="assets/images/gallery/kalinago-nature-1.jpg" alt="River Path">
+        <img src="assets/images/gallery/kalinago-center.jpg" alt="Kalinago Craft Center">
+        <img src="assets/images/gallery/kalinago-event-1.jpg" alt="Cultural Event">
+        <img src="assets/images/gallery/kalinago-craft-2.jpg" alt="Pottery Making">
+        <img src="assets/images/gallery/kalinago-nature-2.jpg" alt="Coastal View">
+        <img src="assets/images/gallery/kalinago-people-1.jpg" alt="Community Members">
+        <img src="assets/images/gallery/kalinago-event-2.jpg" alt="Festival Celebration">
+      </div>
+    </div>
+  </section>
 
-    <!-- Sports and Community Videos -->
-    <section class="section section-gray">
-        <div class="container">
-            <h2>Kalinago in Motion: Sports & Community</h2>
-            <p>Sports unite our villages and generations. These videos capture the strength and spirit of our athletes in action.</p>
-            <div class="video-grid">
-                <iframe src="https://www.youtube.com/embed/DxNIhUWAW_s" title="Basket Making Documentary" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <iframe src="https://www.youtube.com/embed/brvTrd9IBbM" title="Kalinago Premiere League" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <iframe src="https://www.youtube.com/embed/POGKjTeVXXM" title="Cultural Storytelling" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-        </div>
-    </section>
+  <!-- Sports and Community Videos -->
+  <section class="section section-gray">
+    <div class="container">
+      <h2>Kalinago in Motion: Sports & Community</h2>
+      <p>Sports unite our villages and generations. These videos capture the strength and spirit of our athletes in action.</p>
+      <div class="video-grid">
+        <iframe src="https://www.youtube.com/embed/DxNIhUWAW_s" title="Basket Making Documentary" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/brvTrd9IBbM" title="Kalinago Premiere League" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/POGKjTeVXXM" title="Cultural Storytelling" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
 
-    <!-- Past Sports Highlights -->
-    <section class="section section-light">
-        <div class="container">
-            <h2>Past Kalinago Sports Highlights</h2>
-            <p>Watch moments from our cultural and sporting events held in the Territory.</p>
-            <div class="video-scroll-container">
-                <iframe src="https://www.youtube.com/embed/DxNIhUWAW_s" frameborder="0" allowfullscreen></iframe>
-                <iframe src="https://www.youtube.com/embed/POGKjTeVXXM" frameborder="0" allowfullscreen></iframe>
-                <iframe src="https://www.youtube.com/embed/RtmCyAGVYFw" frameborder="0" allowfullscreen></iframe>
-                <iframe src="https://www.youtube.com/embed/-GMG1cfDfQA" frameborder="0" allowfullscreen></iframe>
-                <iframe src="https://www.youtube.com/embed/DxNIhUWAW_s" frameborder="0" allowfullscreen></iframe>
-            </div>
-        </div>
-    </section>
+  <!-- Past Sports Highlights -->
+  <section class="section section-light">
+    <div class="container">
+      <h2>Past Kalinago Sports Highlights</h2>
+      <p>Watch moments from our cultural and sporting events held in the Territory.</p>
+      <div class="video-scroll-container">
+        <iframe src="https://www.youtube.com/embed/DxNIhUWAW_s" frameborder="0" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/POGKjTeVXXM" frameborder="0" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/RtmCyAGVYFw" frameborder="0" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/-GMG1cfDfQA" frameborder="0" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/DxNIhUWAW_s" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
 
-    <!-- Future Fund -->
-    <section class="section section-gray">
-        <div class="container">
-            <h2>Kalinago Empowerment Fund</h2>
-            <p>A dedicated fund to support the Kalinago community through technology, education, and cultural preservation.</p>
-            
-            <div class="donation-options">
-                <div class="donation-card">
-                    <h3>Education Support</h3>
-                    <div class="price">$75</div>
-                    <p>Provide laptops and tech devices for schools in the Kalinago Territory</p>
-                    <a href="#" class="btn btn-primary">Donate Now</a>
-                </div>
-                
-                <div class="donation-card">
-                    <h3>Family Gift Basket</h3>
-                    <div class="price">$50</div>
-                    <p>Support a Kalinago family with essential supplies</p>
-                    <a href="#" class="btn btn-primary">Donate Now</a>
-                </div>
-                
-                <div class="donation-card">
-                    <h3>Sports Sponsorship</h3>
-                    <div class="price">$100</div>
-                    <p>Sponsor prizes for the Kalinago Premier League</p>
-                    <a href="#" class="btn btn-primary">Donate Now</a>
-                </div>
-                
-                <div class="donation-card">
-                    <h3>Scholarship</h3>
-                    <div class="price">$250</div>
-                    <p>Fund a scholarship for one semester of education</p>
-                    <a href="#" class="btn btn-primary">Donate Now</a>
-                </div>
-            </div>
-            
-            <div style="text-align: center; margin-top: 2rem;">
-                <p>If you'd like to support me as I build this initiative:</p>
-                <a href="https://www.paypal.me/OnanT" target="_blank" class="btn btn-primary">Donate via PayPal</a>
-            </div>
+  <!-- Future Fund -->
+  <section class="section section-gray">
+    <div class="container">
+      <h2>Kalinago Empowerment Fund</h2>
+      <p>A dedicated fund to support the Kalinago community through technology, education, and cultural preservation.</p>
+      
+      <div class="donation-options">
+        <div class="donation-card">
+          <h3>Education Support</h3>
+          <div class="price">$75</div>
+          <p>Provide laptops and tech devices for schools in the Kalinago Territory</p>
+          <a href="https://www.paypal.com/ncp/payment/HUKN574ZQNUYC" class="btn btn-primary">Donate Now</a>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Onan Thomas | A descendant's offering. <a href="index.html">Back to Home</a></p>
-            <p>Created with respect for Kalinago elders and community</p>
-        </div>
-    </footer>
-
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    <script>
-        // Initialize Kalinago Map
-        const map = L.map('kalinago-map').setView([15.4967852, -61.2572866], 13);
         
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
+        <div class="donation-card">
+          <h3>Family Gift Basket</h3>
+          <div class="price">$50</div>
+          <p>Support a Kalinago family with essential supplies</p>
+          <a href="https://www.paypal.com/ncp/payment/HUKN574ZQNUYC" class="btn btn-primary">Donate Now</a>
+        </div>
         
-        // Custom icon
-        const kalinagoIcon = L.icon({
-            iconUrl: 'assets/images/map/kalinago-marker.png',
-            iconSize: [32, 32],
-            iconAnchor: [16, 32],
-            popupAnchor: [0, -32]
-        });
+        <div class="donation-card">
+          <h3>Sports Sponsorship</h3>
+          <div class="price">$100</div>
+          <p>Sponsor prizes for the Kalinago Premier League</p>
+          <a href="https://www.paypal.com/ncp/payment/HUKN574ZQNUYC" class="btn btn-primary">Donate Now</a>
+        </div>
         
-        // Add markers
-        const markers = [
-            {
-                coords: [15.4846543, -61.2644644],
-                title: "Kalinago Barana Aute",
-                description: "Cultural village and heritage center."
-            },
-            {
-                coords: [15.4575219, -61.2695284],
-                title: "E'scale Tete Chien",
-                description: "Viewpoint and traditional lookout."
-            },
-            {
-                coords: [15.4882882, -61.2589944],
-                title: "Centipede Trail",
-                description: "Nature trail rich in flora and fauna."
-            },
-            {
-                coords: [15.4952965, -61.2599386],
-                title: "Jolly John Park",
-                description: "Community recreation and event grounds."
-            },
-            {
-                coords: [15.4812345, -61.2723456],
-                title: "Kalinago Council Office",
-                description: "Administrative center of the Territory."
-            },
-            {
-                coords: [15.4923456, -61.2654321],
-                title: "Sacred Waterfall",
-                description: "Traditional spiritual site."
-            }
-        ];
-        
-        markers.forEach(marker => {
-            L.marker(marker.coords, {icon: kalinagoIcon})
-                .addTo(map)
-                .bindPopup(`<b>${marker.title}</b><br>${marker.description}`);
-        });
-    </script>
+        <div class="donation-card">
+          <h3>Scholarship</h3>
+          <div class="price">$250</div>
+          <p>Fund a scholarship for one semester of education</p>
+          <a href="https://www.paypal.com/ncp/payment/HUKN574ZQNUYC" class="btn btn-primary">Donate Now</a>
+        </div>
+      </div>
+      
+      <div style="text-align: center; margin-top: 2rem;">
+        <p>If you'd like to support me as I build this initiative:</p>
+        <style>.pp-HUKN574ZQNUYC{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;}</style>
+        <form action="https://www.paypal.com/ncp/payment/HUKN574ZQNUYC" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;">
+          <input class="pp-HUKN574ZQNUYC" type="submit" value="Donate via PayPal" />
+          <img src=https://www.paypalobjects.com/images/Debit_Credit.svg alt="cards" />
+          <section style="font-size: 0.75rem;"> Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Onan Thomas | A descendant's offering. <a href="index.html">Back to Home</a></p>
+      <p>Created with respect for Kalinago elders and community</p>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    // Initialize Kalinago Map
+    const map = L.map('map').setView([15.4967852, -61.2572866], 13);
+    
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+    
+    // Custom icon
+    const kalinagoIcon = L.icon({
+      iconUrl: 'assets/images/map/kalinago-marker.png',
+      iconSize: [32, 32],
+      iconAnchor: [16, 32],
+      popupAnchor: [0, -32]
+    });
+    
+    // Add markers
+    const markers = [
+      {
+        coords: [15.4846543, -61.2644644],
+        title: "Kalinago Barana Aute",
+        description: "Cultural village and heritage center."
+      },
+      {
+        coords: [15.4575219, -61.2695284],
+        title: "E'scale Tete Chien",
+        description: "Viewpoint and traditional lookout."
+      },
+      {
+        coords: [15.4882882, -61.2589944],
+        title: "Centipede Trail",
+        description: "Nature trail rich in flora and fauna."
+      },
+      {
+        coords: [15.4952965, -61.2599386],
+        title: "Jolly John Park",
+        description: "Community recreation and event grounds."
+      },
+      {
+        coords: [15.4812345, -61.2723456],
+        title: "Kalinago Council Office",
+        description: "Administrative center of the Territory."
+      },
+      {
+        coords: [15.4923456, -61.2654321],
+        title: "Sacred Waterfall",
+        description: "Traditional spiritual site."
+      }
+    ];
+    
+    markers.forEach(marker => {
+      L.marker(marker.coords, {icon: kalinagoIcon})
+        .addTo(map)
+        .bindPopup(`<b>${marker.title}</b><br>${marker.description}`);
+    });
+  </script>
 </body>
 </html>
