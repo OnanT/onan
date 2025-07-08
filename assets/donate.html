@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Our Initiatives | Onan Thomas</title>
+    <link rel="icon" href="assets/images/favicon.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Brand Color Variables */
+        :root {
+            --primary-green: #2ba745;
+            --secondary-blue: #007bff;
+            --neutral-gray: #6c757d;
+            --accent-teal: #17a2b8;
+            --light-gray: #f8f9fa;
+            --dark-gray: #343a40;
+            --terminal-green: #32cd32;
+        }
+        
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #ffffff;
+            color: var(--neutral-gray);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            color: var(--dark-gray);
+            font-weight: 700;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin: 2rem 0 1rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary-green);
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--dark-gray) 0%, var(--neutral-gray) 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .logo span {
+            color: var(--primary-green);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+            padding: 0.5rem 0.8rem;
+            border-radius: 4px;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--primary-green);
+        }
+        
+        /* Hamburger Menu Styles */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            padding: 0.5rem;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .tagline {
+            display: inline-block;
+            background: rgba(43, 167, 69, 0.2);
+            border-left: 3px solid var(--primary-green);
+            padding: 0.5rem 1rem;
+            font-style: italic;
+            margin: 1rem 0;
+        }
+        
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+        }
+        
+        .btn-primary {
+            background: var(--primary-green);
+            color: white;
+            border: 2px solid var(--primary-green);
+        }
+        
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--primary-green);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-green);
+            border: 2px solid var(--primary-green);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--primary-green);
+            color: white;
+        }
+        
+        /* Donation Section */
+        .donation-intro {
+            padding: 5rem 0 3rem;
+            background: white;
+            text-align: center;
+        }
+        
+        .initiatives-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .initiative-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .initiative-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+        
+        .initiative-header {
+            padding: 1.5rem;
+            color: white;
+            text-align: center;
+        }
+        
+        .kalinago-header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+        }
+        
+        .greywolf-header {
+            background: linear-gradient(135deg, #1a2a6c 0%, #b21f1f 100%);
+        }
+        
+        .support-header {
+            background: linear-gradient(135deg, #2ba745 0%, #27c93f 100%);
+        }
+        
+        .initiative-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .initiative-content {
+            padding: 2rem;
+        }
+        
+        .initiative-content h3 {
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+        }
+        
+        .impact-list {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+        
+        .impact-list li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .impact-list li:before {
+            content: '✓';
+            color: var(--primary-green);
+            font-weight: bold;
+            margin-right: 0.8rem;
+            font-size: 1.2rem;
+        }
+        
+        .donation-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .donation-option {
+            background: var(--light-gray);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .donation-option:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .donation-option .price {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--dark-gray);
+            margin: 1rem 0;
+        }
+        
+        .paypal-btn {
+            display: inline-block;
+            background: #FFC439;
+            color: #001435;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            font-weight: bold;
+            text-decoration: none;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .paypal-btn:hover {
+            background: #f2b939;
+            transform: translateY(-3px);
+        }
+        
+        .paypal-btn i {
+            margin-right: 0.5rem;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 5rem 0;
+            background: var(--light-gray);
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .testimonial-card:before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 4rem;
+            color: rgba(43, 167, 69, 0.1);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+        
+        .testimonial-text {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary-green);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-right: 1rem;
+        }
+        
+        /* FAQ Section */
+        .faq {
+            padding: 5rem 0;
+            background: white;
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 1.5rem;
+            background: var(--light-gray);
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-question:after {
+            content: '+';
+            font-size: 1.5rem;
+        }
+        
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 1.5rem;
+            max-height: 1000px;
+        }
+        
+        .faq-item.active .faq-question:after {
+            content: '-';
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark-gray);
+            color: rgba(255, 255, 255, 0.7);
+            text-align: center;
+            padding: 2rem 0;
+            font-size: 0.9rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .social-link:hover {
+            background: var(--primary-green);
+            transform: translateY(-5px);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hamburger {
+                display: block;
+                z-index: 1000;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 70%;
+                max-width: 300px;
+                background: var(--dark-gray);
+                flex-direction: column;
+                padding: 6rem 2rem 2rem;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+                z-index: 999;
+                overflow-y: auto;
+            }
+            
+            .nav-links.active {
+                right: 0;
+                transform: translateX(0);
+            }
+            
+            .nav-links li {
+                margin: 1rem 0;
+            }
+            
+            .nav-links a {
+                display: block;
+                padding: 1rem;
+                border-radius: 4px;
+                background: rgba(255, 255, 255, 0.05);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    <img src="assets/images/onanlogo.png" alt="Onan Thomas">
+                    <span>onan.thomas</span>
+                </a>
+                
+                <button class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="skills.html">Skills</a></li>
+                    <li><a href="resume.html">Resume</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="kalinago.html">Kalinago</a></li>
+                    <li><a href="greywolf.html">GreyWolf</a></li>
+                    <li><a href="donate.html" class="active">Donate</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Support Our Initiatives</h1>
+                <p class="tagline">Your contribution makes a difference</p>
+                <p>Help fund community projects, open-source development, and cultural preservation efforts</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donation Introduction -->
+    <section class="donation-intro">
+        <div class="container">
+            <h2>How Your Support Helps</h2>
+            <p>Every contribution directly impacts our ability to create meaningful change through technology and cultural preservation. Your support helps fund community initiatives, open-source projects, and educational programs.</p>
+            <p>100% of donations go directly to the initiatives you choose to support. We maintain complete transparency about how funds are used.</p>
+            
+            <div class="initiatives-container">
+                <!-- Kalinago Initiative -->
+                <div class="initiative-card">
+                    <div class="initiative-header kalinago-header">
+                        <div class="initiative-icon">
+                            <i class="fas fa-people-group"></i>
+                        </div>
+                        <h2>Kalinago Community</h2>
+                    </div>
+                    <div class="initiative-content">
+                        <h3>Cultural Preservation & Empowerment</h3>
+                        <p>Supporting the Kalinago community through education, technology access, and cultural preservation initiatives.</p>
+                        
+                        <ul class="impact-list">
+                            <li>Digital preservation of Kalinago language and traditions</li>
+                            <li>Technology education programs for youth</li>
+                            <li>Community development projects</li>
+                            <li>Cultural event sponsorship</li>
+                            <li>Educational scholarships</li>
+                        </ul>
+                        
+                        <h3>Donation Options</h3>
+                        <div class="donation-options">
+                            <div class="donation-option">
+                                <h4>Education Support</h4>
+                                <div class="price">$75</div>
+                                <p>Provide laptops for schools in Kalinago Territory</p>
+                                <a href="https://www.paypal.com/donate?hosted_button_id=YOUR_BUTTON_ID" class="paypal-btn">
+                                    <i class="fab fa-paypal"></i> Donate
+                                </a>
+                            </div>
+                            
+                            <div class="donation-option">
+                                <h4>Family Gift Basket</h4>
+                                <div class="price">$50</div>
+                                <p>Support a Kalinago family with essential supplies</p>
+                                <a href="https://www.paypal.com/donate?hosted_button_id=YOUR_BUTTON_ID" class="paypal-btn">
+                                    <i class="fab fa-paypal"></i> Donate
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top: 1.5rem;">
+                            <a href="kalinago.html" class="btn btn-secondary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- GreyWolf Project -->
+                <div class="initiative-card">
+                    <div class="initiative-header greywolf-header">
+                        <div class="initiative-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h2>GreyWolf Project</h2>
+                    </div>
+                    <div class="initiative-content">
+                        <h3>Open-Source Security Development</h3>
+                        <p>Funding the development and maintenance of GreyWolf, an open-source reconnaissance framework for security professionals.</p>
+                        
+                        <ul class="impact-list">
+                            <li>Tool development and maintenance</li>
+                            <li>Documentation and tutorials</li>
+                            <li>Community support and engagement</li>
+                            <li>Security research and vulnerability discovery</li>
+                            <li>Educational resources for ethical hackers</li>
+                        </ul>
+                        
+                        <h3>Support Options</h3>
+                        <div class="donation-options">
+                            <div class="donation-option">
+                                <h4>Individual Sponsor</h4>
+                                <div class="price">$25</div>
+                                <p>Support ongoing development</p>
+                                <a href="https://www.paypal.com/donate?hosted_button_id=YOUR_BUTTON_ID" class="paypal-btn">
+                                    <i class="fab fa-paypal"></i> Donate
+                                </a>
+                            </div>
+                            
+                            <div class="donation-option">
+                                <h4>Organization Sponsor</h4>
+                                <div class="price">$100</div>
+                                <p>Premium support and recognition</p>
+                                <a href="https://www.paypal.com/donate?hosted_button_id=YOUR_BUTTON_ID" class="paypal-btn">
+                                    <i class="fab fa-paypal"></i> Donate
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top: 1.5rem;">
+                            <a href="greywolf.html" class="btn btn-secondary">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- General Support -->
+                <div class="initiative-card">
+                    <div class="initiative-header support-header">
+                        <div class="initiative-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <h2>General Support</h2>
+                    </div>
+                    <div class="initiative-content">
+                        <h3>Support My Work</h3>
+                        <p>Help fund ongoing projects, research, and content creation that bridges technology, design, and cultural preservation.</p>
+                        
+                        <ul class="impact-list">
+                            <li>Development of new tools and resources</li>
+                            <li>Educational content creation</li>
+                            <li>Open-source project maintenance</li>
+                            <li>Technology access initiatives</li>
+                            <li>Community workshops and events</li>
+                        </ul>
+                        
+                        <h3>Support Options</h3>
+                        <div class="donation-options">
+                            <div class="donation-option">
+                                <h4>One-Time Donation</h4>
+                                <p>Any amount to support my work</p>
+                                <a href="https://www.paypal.com/donate?hosted_button_id=YOUR_BUTTON_ID" class="paypal-btn">
+                                    <i class="fab fa-paypal"></i> Donate
+                                </a>
+                            </div>
+                            
+                            <div class="donation-option">
+                                <h4>Monthly Supporter</h4>
+                                <div class="price">$10/mo</div>
+                                <p>Sustained support for ongoing projects</p>
+                                <a href="https://www.paypal.com/donate?hosted_button_id=YOUR_BUTTON_ID" class="paypal-btn">
+                                    <i class="fab fa-paypal"></i> Subscribe
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top: 1.5rem;">
+                            <a href="contact.html" class="btn btn-secondary">Contact Me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2>What Supporters Say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Seeing the impact of my donation in the Kalinago community was incredibly rewarding. The laptops we provided are helping students access digital education resources they never had before."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SJ</div>
+                        <div>
+                            <h4>Sarah Johnson</h4>
+                            <p>Education Supporter</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "As a security professional, I use GreyWolf daily. Contributing to its development was an easy decision. The project has saved me countless hours in reconnaissance work."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MR</div>
+                        <div>
+                            <h4>Michael Rodriguez</h4>
+                            <p>Security Engineer</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "I've been a monthly supporter for over a year now. It's inspiring to see how even small recurring contributions can make a real difference in supporting innovative projects."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">TP</div>
+                        <div>
+                            <h4>Thomas Parker</h4>
+                            <p>Monthly Supporter</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">How are donations used?</div>
+                    <div class="faq-answer">
+                        <p>100% of your donation goes directly to the initiative you select. We maintain complete transparency about fund allocation through quarterly reports published on our blog.</p>
+                        <p>Administrative costs are covered separately, so every dollar you donate supports the actual projects and communities.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Can I get a receipt for tax purposes?</div>
+                    <div class="faq-answer">
+                        <p>Yes! All donations through PayPal automatically generate a receipt that can be used for tax purposes. For recurring donations, you'll receive an annual summary of your contributions.</p>
+                        <p>For donations over $250, we provide an official donation letter upon request.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Can I donate anonymously?</div>
+                    <div class="faq-answer">
+                        <p>Absolutely. During the PayPal donation process, you can choose to make your donation anonymous. We respect your privacy and won't share your information without permission.</p>
+                        <p>Even if you donate anonymously, we'll still send you updates about how your contribution is making a difference (unless you opt out).</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">What other ways can I support besides money?</div>
+                    <div class="faq-answer">
+                        <p>There are many valuable ways to contribute beyond financial support:</p>
+                        <ul>
+                            <li>Contribute to our open-source projects on GitHub</li>
+                            <li>Share our initiatives on social media</li>
+                            <li>Volunteer your skills (design, development, documentation)</li>
+                            <li>Participate in community events</li>
+                            <li>Provide educational resources for Kalinago youth</li>
+                        </ul>
+                        <p>Contact us to discuss how you can contribute your skills and time.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">How can I track the impact of my donation?</div>
+                    <div class="faq-answer">
+                        <p>We provide regular updates through several channels:</p>
+                        <ul>
+                            <li>Quarterly impact reports on our blog</li>
+                            <li>Project-specific updates for GreyWolf and Kalinago initiatives</li>
+                            <li>Email newsletters for supporters</li>
+                            <li>Transparent financial reports</li>
+                        </ul>
+                        <p>For specific inquiries about how your donation was used, feel free to contact us directly.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://github.com/OnanT" class="social-link" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/onan-thomas/" class="social-link" target="_blank">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://twitter.com/Dr_Cokes" class="social-link" target="_blank">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="mailto:onan.thomas.08@gmail.com" class="social-link">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+            <p>&copy; 2023 Onan Thomas. All rights reserved.</p>
+            <p>Designed with <span style="color: var(--primary-green);">♥</span> and the original spectrum</p>
+        </div>
+    </footer>
+
+    <script>
+        // Hamburger Menu Functionality
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = hamburger.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Close menu when clicking outside on mobile
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 992 && navLinks.classList.contains('active') && 
+                !e.target.closest('#navLinks') && !e.target.closest('#hamburger')) {
+                navLinks.classList.remove('active');
+                const icon = hamburger.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // FAQ Accordion Functionality
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', () => {
+                // Close other items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current item
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

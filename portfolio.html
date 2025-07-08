@@ -363,7 +363,7 @@
             display: flex;
             justify-content: center;
             gap: 1.5rem;
-            margin: 2rem 0;
+            margin: 1rem 0 2rem;
         }
         
         .social-link {
@@ -374,7 +374,7 @@
             height: 50px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.1);
-            color: white;
+            color: var(--primary-green);
             font-size: 1.5rem;
             transition: all 0.3s ease;
             text-decoration: none;
@@ -382,6 +382,7 @@
         
         .social-link:hover {
             background: var(--primary-green);
+            color: white;
             transform: translateY(-5px);
         }
         
@@ -583,9 +584,9 @@
     </section>
 
     <!-- Contact Section -->
-    <section class="contact-section">
+    <section id="contact" class="contact-section">
         <div class="container">
-            <h2 style="text-align: center;">Contact Me</h2>
+            <h2>Get In Touch</h2>
             <p style="text-align: center; max-width: 700px; margin: 0 auto 2rem;">Have a project in mind or want to discuss potential opportunities? Get in touch!</p>
             
             <div class="contact-container">
@@ -598,7 +599,7 @@
                         </div>
                         <div>
                             <h4>Email</h4>
-                            <p>onan.thomas.08@gmail.com</p>
+                            <p>onanthomas@proton.me</p>
                         </div>
                     </div>
                     
@@ -608,7 +609,7 @@
                         </div>
                         <div>
                             <h4>Phone</h4>
-                            <p>+1 (767) 555-0123</p>
+                            <p>+1 (767) 661-4248</p>
                         </div>
                     </div>
                     
@@ -618,17 +619,7 @@
                         </div>
                         <div>
                             <h4>Location</h4>
-                            <p>Roseau, Dominica</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-method">
-                        <div class="contact-icon">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                        <div>
-                            <h4>Availability</h4>
-                            <p>Monday-Friday: 9am-5pm AST</p>
+                            <p>Prospect, Nevis</p>
                         </div>
                     </div>
                     
@@ -642,36 +633,40 @@
                         <a href="https://twitter.com/Dr_Cokes" class="social-link" target="_blank">
                             <i class="fab fa-twitter"></i>
                         </a>
-                        <a href="https://www.instagram.com/" class="social-link" target="_blank">
-                            <i class="fab fa-instagram"></i>
-                        </a>
                     </div>
                 </div>
                 
                 <div class="contact-form">
                     <h3>Send a Message</h3>
                     <form id="contactForm">
+                        <div id="formMessage" class="form-message"></div>
+                        
                         <div class="form-group">
-                            <label for="name">Full Name</label>
+                            <label for="name">Full Name *</label>
                             <input type="text" id="name" class="form-control" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="email">Email Address</label>
+                            <label for="email">Email Address *</label>
                             <input type="email" id="email" class="form-control" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="subject">Subject</label>
+                            <label for="subject">Subject *</label>
                             <input type="text" id="subject" class="form-control" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="message">Message</label>
+                            <label for="message">Message *</label>
                             <textarea id="message" class="form-control" required></textarea>
                         </div>
                         
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">
+                            <span id="submitText">Send Message</span>
+                            <span id="spinner" style="display:none;">
+                                <i class="fas fa-spinner fa-spin"></i> Sending...
+                            </span>
+                        </button>
                     </form>
                 </div>
             </div>
@@ -685,6 +680,21 @@
             <p>Designed with <span style="color: var(--primary-green);">♥</span> and the original spectrum</p>
         </div>
     </footer>
+
+    <!-- Thank You Modal -->
+    <div id="thankYouModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; align-items: center; justify-content: center;">
+        <div class="thank-you">
+            <div class="thank-you-content">
+                <div class="thank-you-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h2>Thank You!</h2>
+                <p>Your message has been sent successfully.</p>
+                <p>I'll get back to you as soon as possible.</p>
+                <a href="#" class="btn btn-primary" onclick="closeModal()">Back to Portfolio</a>
+            </div>
+        </div>
+    </div>
 
     <script>
         // Portfolio Filter Functionality
@@ -711,33 +721,71 @@
             });
         });
         
-        // Contact Form Submission
-        const contactForm = document.getElementById('contactForm');
-        
-        contactForm.addEventListener('submit', function(e) {
+        // Contact Form Handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Get form values
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value;
+            // Show loading spinner
+            document.getElementById('submitText').style.display = 'none';
+            document.getElementById('spinner').style.display = 'inline';
             
-            // Simple validation
-            if (!name || !email || !subject || !message) {
-                alert('Please fill in all fields');
-                return;
-            }
+            // Form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value
+            };
             
-            // In a real implementation, you would send this data to a server
-            console.log('Form submitted:', { name, email, subject, message });
+            // FormSubmit endpoint - replace with your FormSubmit email
+            const endpoint = 'https://formsubmit.co/ajax/onanthomas@proton.me';
             
-            // Show success message
-            alert('Thank you for your message! I will get back to you soon.');
-            
-            // Reset form
-            contactForm.reset();
+            // AJAX request
+            fetch(endpoint, {
+                method: 'POST',
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success === "true") {
+                    // Show success message
+                    document.getElementById('thankYouModal').style.display = 'flex';
+                    
+                    // Reset form
+                    document.getElementById('contactForm').reset();
+                } else {
+                    showMessage('Error: ' + data.message, 'error');
+                }
+            })
+            .catch(error => {
+                showMessage('Error: ' + error.message, 'error');
+            })
+            .finally(() => {
+                // Hide spinner
+                document.getElementById('submitText').style.display = 'inline';
+                document.getElementById('spinner').style.display = 'none';
+            });
         });
+        
+        function showMessage(text, type) {
+            const messageEl = document.getElementById('formMessage');
+            messageEl.textContent = text;
+            messageEl.className = `form-message ${type}`;
+            messageEl.style.display = 'block';
+            
+            // Auto-hide after 5 seconds
+            setTimeout(() => {
+                messageEl.style.display = 'none';
+            }, 3000);
+        }
+        
+        function closeModal() {
+            document.getElementById('thankYouModal').style.display = 'none';
+        }
     </script>
 </body>
 </html>

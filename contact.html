@@ -377,23 +377,87 @@
         </div>
     </footer>
 
+        <!-- Thank You Modal -->
+        <div id="thankYouModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; align-items: center; justify-content: center;">
+            <div class="thank-you">
+                <div class="thank-you-content">
+                    <div class="thank-you-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h2>Thank You!</h2>
+                    <p>Your message has been sent successfully.</p>
+                    <p>I'll get back to you as soon as possible.</p>
+                    <a href="#" class="btn btn-primary" onclick="closeModal()">Back to Blog</a>
+                </div>
+            </div>
+        </div>
+
     <script>
-        // Form validation
+        // Contact Form Handling
         document.getElementById('contactForm').addEventListener('submit', function(e) {
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
+            e.preventDefault();
             
-            if (!name || !email || !message) {
-                e.preventDefault();
-                alert('Please fill in all required fields');
-                return false;
-            }
+            // Show loading spinner
+            document.getElementById('submitText').style.display = 'none';
+            document.getElementById('spinner').style.display = 'inline';
             
-            // Add form submission analytics here
-            console.log('Contact form submitted');
-            return true;
+            // Form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value
+            };
+            
+            // FormSubmit endpoint - replace with your FormSubmit email
+            const endpoint = 'https://formsubmit.co/ajax/onanthomas@proton.me';
+            
+            // AJAX request
+            fetch(endpoint, {
+                method: 'POST',
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success === "true") {
+                    // Show success message
+                    document.getElementById('thankYouModal').style.display = 'flex';
+                    
+                    // Reset form
+                    document.getElementById('contactForm').reset();
+                } else {
+                    showMessage('Error: ' + data.message, 'error');
+                }
+            })
+            .catch(error => {
+                showMessage('Error: ' + error.message, 'error');
+            })
+            .finally(() => {
+                // Hide spinner
+                document.getElementById('submitText').style.display = 'inline';
+                document.getElementById('spinner').style.display = 'none';
+            });
         });
+        
+        function showMessage(text, type) {
+            const messageEl = document.getElementById('formMessage');
+            messageEl.textContent = text;
+            messageEl.className = `form-message ${type}`;
+            messageEl.style.display = 'block';
+            
+            // Auto-hide after 5 seconds
+            setTimeout(() => {
+                messageEl.style.display = 'none';
+            }, 3000);
+        }
+        
+        function closeModal() {
+            document.getElementById('thankYouModal').style.display = 'none';
+        }
     </script>
 </body>
 </html>

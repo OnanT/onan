@@ -17,6 +17,7 @@
             --light-gray: #f8f9fa;
             --dark-gray: #343a40;
             --terminal-green: #32cd32;
+            --accent-orange: #ff6b6b
         }
         
         /* Base Styles */
@@ -89,10 +90,22 @@
             font-weight: 700;
             font-size: 1.5rem;
             color: white;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover img {
+            transform: translateY(-3px);
         }
         
         .logo span {
-            color: var(--primary-green);
+            display: none;
         }
         
         .nav-links {
@@ -101,7 +114,7 @@
         }
         
         .nav-links li {
-            margin-left: 1.5rem;
+            margin-left: 1rem;
         }
         
         .nav-links a {
@@ -114,7 +127,131 @@
         .nav-links a:hover {
             color: var(--primary-green);
         }
-        
+                .button-container {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        /* Terminal Style Buttons */
+        .btn-terminal {
+            background-color: var(--dark-gray);
+            color: var(--terminal-green);
+            border: 2px solid var(--terminal-green);
+            padding: 12px 24px;
+            text-decoration: none;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-terminal:hover {
+            background-color: var(--terminal-green);
+            color: var(--dark-gray);
+            box-shadow: 0 0 20px rgba(50, 205, 50, 0.5);
+            text-shadow: none;
+        }
+
+        .btn-terminal:before {
+            content: '> ';
+            font-weight: bold;
+        }
+
+        .btn-terminal:active {
+            transform: scale(0.98);
+        }
+
+        /* Secondary Terminal Button */
+        .btn-terminal-secondary {
+            background-color: var(--dark-gray);
+            color: var(--accent-teal);
+            border: 2px solid var(--accent-teal);
+            padding: 12px 24px;
+            text-decoration: none;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-terminal-secondary:hover {
+            background-color: var(--accent-teal);
+            color: var(--dark-gray);
+            box-shadow: 0 0 20px rgba(23, 162, 184, 0.5);
+            text-shadow: none;
+        }
+
+        .btn-terminal-secondary:before {
+            content: '$ ';
+            font-weight: bold;
+        }
+
+        .btn-terminal-secondary:active {
+            transform: scale(0.98);
+        }
+        /* Tertiary Terminal Button */
+        .btn-terminal-tertiary {
+            background-color: var(--dark-gray);
+            color: var(--accent-orange);
+            border: 2px solid var(--accent-orange);
+            padding: 12px 24px;
+            text-decoration: none;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-terminal-tertiary:hover {
+            background-color: var(--accent-orange);
+            color: var(--dark-gray);
+            box-shadow: 0 0 20px rgba(23, 162, 184, 0.5);
+            text-shadow: none;
+        }
+
+        .btn-terminal-tertiary:before {
+            content: '$ ';
+            font-weight: bold;
+        }
+
+        .btn-terminal-tertiary:active {
+            transform: scale(0.98);
+        }
+        /* Alternative: Blinking cursor effect */
+        .btn-terminal-blink:after {
+            content: '_';
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        /* Hamburger Menu Styles */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            padding: 0.5rem;
+        }
+
         /* Hero Section */
         .hero {
             background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
@@ -667,6 +804,11 @@
             .greywolf-container, .kalinago-container {
                 grid-template-columns: 1fr;
             }
+
+            .hamburger {
+                display: block;
+                z-index: 1000;
+            }            
             
             .timeline-content {
                 width: auto;
@@ -724,7 +866,15 @@
     <header>
         <div class="container">
             <nav>
-                <div class="logo">onan<span>.thomas</span></div>
+                <a href="index.html" class="logo">
+                    <img src="assets/images/onanlogo.png" alt="Onan Thomas">
+                    <span>onan.thomas</span>
+                </a>
+                
+                <button class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
@@ -768,8 +918,11 @@
                     <p>I'm a passionate visual designer with expertise in graphic design and emerging technologies. With a background in both creative design and technical implementation, I bridge the gap between visual aesthetics and functional technology solutions.</p>
                     <p>My journey began in visual design, where I honed skills in Adobe Creative Suite and developed a keen eye for detail. This foundation led me to explore the technical aspects of design, including web development and Python programming.</p>
                     <p>Today, I specialize in creating visually compelling experiences that leverage both design principles and technical implementation. My approach combines <span class="highlight">creative vision</span> with <span class="highlight">technical precision</span> to deliver solutions that are both beautiful and functional.</p>
-                    <a href="about.html" class="btn">Read Full Bio</a>
-                    <a href="resume.html" class="btn">View Resume</a>
+                    <div class="button-container">
+                        <a href="about.html" class="btn-terminal btn-terminal-blink">Read Full Bio</a>
+                        <a href="resume.html" class="btn-terminal-secondary btn-terminal-blink">View Resume</a>
+                        <a href="skills.html" class="btn-terminal-tertiary btn-terminal-blink">View Skills</a>
+                    </div>
                 </div>
             </div>
             
@@ -866,7 +1019,7 @@
                             <span class="project-tag">Web Dev</span>
                             <span class="project-tag">Automation</span>
                         </div>
-                        <a href="portfolio/tech.html" class="btn btn-primary">View Projects</a>
+                        <a href="portfolio.html" class="btn btn-primary">View Projects</a>
                     </div>
                 </div>
                 
@@ -957,28 +1110,28 @@
             <div class="donation-options">
                 <div class="donation-card">
                     <h3>Kalinago Education</h3>
-                    <div class="price">$75</div>
+                    <div class="price">$5</div>
                     <p>Supply laptops to schools in Kalinago Territory</p>
                     <a href="#" class="btn btn-primary">Donate</a>
                 </div>
                 
                 <div class="donation-card">
                     <h3>Family Gift Basket</h3>
-                    <div class="price">$50</div>
+                    <div class="price">$00</div>
                     <p>Support a Kalinago family with essential supplies</p>
                     <a href="#" class="btn btn-primary">Donate</a>
                 </div>
                 
                 <div class="donation-card">
                     <h3>Kalinago Premier League</h3>
-                    <div class="price">$100</div>
+                    <div class="price">$15</div>
                     <p>Sponsor prizes for most runs in KPL</p>
                     <a href="#" class="btn btn-primary">Donate</a>
                 </div>
                 
                 <div class="donation-card">
                     <h3>Scholarship Fund</h3>
-                    <div class="price">$250</div>
+                    <div class="price">$20</div>
                     <p>Sponsor a scholarship for one semester</p>
                     <a href="#" class="btn btn-primary">Donate</a>
                 </div>
