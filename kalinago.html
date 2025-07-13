@@ -16,6 +16,9 @@
       --accent-teal: #17a2b8;
       --light-gray: #f8f9fa;
       --dark-gray: #343a40;
+
+      --kalinago-yellow: #FFD140;
+      --kalinago-earth: #8B5A2B;
     }
 
     * {
@@ -64,52 +67,273 @@
       height: 3px;
       background: var(--primary-green);
     }
-    
+            /* Hamburger Menu Styles */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            padding: 0.5rem;
+        }
+
     /* Header Styles */
-    header {
-      background: linear-gradient(135deg, var(--dark-gray) 0%, var(--neutral-gray) 100%);
-      color: white;
-      padding: 1rem 0;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        header {
+            background: linear-gradient(135deg, var(--dark-gray) 0%, var(--neutral-gray) 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover img {
+            transform: translateY(-3px);
+        }
+        
+        .logo span {
+            display: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 1rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-green);
+        }
+                .button-container {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+    /* Timeline Styles */
+    .timeline {
+      position: relative;
+      margin-top: 2rem;
     }
-    
-    nav {
+
+    .timeline-item {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease-out;
+      margin-bottom: 3rem;
+      position: relative;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
+      flex-direction: row;
+      align-items: flex-start;
     }
-    
-    .logo {
-      font-weight: 700;
-      font-size: 1.5rem;
-      color: white;
+
+    .timeline-item:nth-child(even) {
+      flex-direction: row-reverse;
     }
-    
-    .logo span {
+
+    .timeline-item.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .timeline-date {
+      font-weight: bold;
       color: var(--primary-green);
+      margin-bottom: 0.3rem;
+      min-width: 100px;
     }
-    
-    .nav-links {
+
+    .timeline-content {
+      background: white;
+      padding: 1rem;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
       display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      max-width: 600px;
+    }
+
+    .timeline-content img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+
+    .timeline-content audio {
+      margin-top: 0.5rem;
+      width: 100%;
+    }
+
+
+    /* Horizontal Timeline Styles */
+    .timeline-section {
+      overflow-x: auto;
+      white-space: nowrap;
+      padding: 2rem 0;
+    }
+
+    .horizontal-timeline {
+      display: flex;
+      gap: 2rem;
+      padding-bottom: 1rem;
+      animation: scrollTimeline 60s linear infinite;
+    }
+
+    @keyframes scrollTimeline {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .timeline-card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 1rem;
+      min-width: 250px;
+      max-width: 280px;
+      display: inline-block;
+      vertical-align: top;
+      white-space: normal;
+    }
+
+    .timeline-card h4 {
+      color: var(--primary-green);
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    .timeline-card .timeline-date {
+      font-weight: bold;
+      font-size: 0.9rem;
+      color: var(--neutral-gray);
+      margin-bottom: 0.3rem;
+    }
+
+    .timeline-card p {
+      font-size: 0.9rem;
+      color: var(--dark-gray);
+    }
+
+    .timeline-section::-webkit-scrollbar {
+      height: 8px;
+    }
+    .timeline-section::-webkit-scrollbar-thumb {
+      background-color: var(--primary-green);
+      border-radius: 10px;
+    }
+
+    /* Suggested Places & Resources */
+    .resources-section ul {
       list-style: none;
+      padding-left: 0;
     }
-    
-    .nav-links li {
-      margin-left: 1.5rem;
+
+    .resources-section li {
+      margin-bottom: 0.75rem;
     }
-    
-    .nav-links a {
-      color: white;
-      text-decoration: none;
+
+    .resources-section a {
+      color: var(--secondary-blue);
       font-weight: 600;
-      transition: color 0.3s;
+      text-decoration: none;
     }
-    
-    .nav-links a:hover {
-      color: var(--primary-green);
+
+    .resources-section a:hover {
+      text-decoration: underline;
+    }
+
+    /* Map Legend Styling */
+    .map-container {
+      position: relative;
+    }
+
+    #map-legend {
+      position: absolute;
+      top: 150px;
+      right: 20px;
+      background: white;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      font-size: 0.9rem;
+      z-index: 999;
+    }
+
+    #map-legend h4 {
+      margin-bottom: 0.5rem;
+    }
+
+    #map-legend ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    #map-legend li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    #map-legend img {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* Suggested Places & Resources */
+    .resources-section ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .resources-section li {
+      margin-bottom: 0.75rem;
+    }
+
+    .resources-section a {
+      color: var(--secondary-blue);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .resources-section a:hover {
+      text-decoration: underline;
     }
     
     /* Hero Section */
@@ -339,20 +563,25 @@
     <!--End of Tawk.to Script-->
 <body>
 
-  <!-- Header -->
+    <!-- Header -->
     <header>
         <div class="container">
             <nav>
-                <div class="logo">onan<span>.thomas</span></div>
+                <a href="index.html" class="logo">
+                    <img src="assets/images/onanlogo.png" alt="Onan Thomas">
+                    <span>onan.thomas</span>
+                </a>
+                
+                <button class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="services.html">Services</a></li>
                     <li><a href="portfolio.html">Portfolio</a></li>
-                    <li><a href="skills.html">Skills</a></li>
-                    <li><a href="resume.html">Resume</a></li>
                     <li><a href="blog.html">Blog</a></li>
-                    <li><a href="kalinago.html">Kalinago</a></li>
                     <li><a href="greywolf.html">GreyWolf</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
@@ -385,21 +614,92 @@
       <p>The Kalinago, once known as Caribs, are the Indigenous people of the Lesser Antilles. The Kalinago Territory in Dominica remains one of the few legally recognized Indigenous communities in the Caribbean. We maintain language, craft, and connection to land despite colonization and modern pressures.</p>
       
       <div class="gallery-grid" style="margin-top: 2rem;">
-        <img src="assets/images/gallery/kalinago-culture-1.jpg" alt="Kalinago Craftsmanship">
+        <img src="assets/images/gallery/kalinago-culture-1.png" alt="Kalinago Craftsmanship">
         <img src="assets/images/gallery/kalinago-culture-2.jpg" alt="Traditional Dance">
         <img src="assets/images/gallery/kalinago-culture-3.jpg" alt="Community Gathering">
-        <img src="assets/images/gallery/kalinago-culture-4.jpg" alt="Cultural Artifacts">
+        <img src="assets/images/gallery/kalinago-culture-4.png" alt="Cultural Artifacts">
+      </div>
+    </div>
+  </section>
+
+  <!-- Legacy and Significance -->
+    <section class="section section-gray">
+    <div class="container">
+      <h2>Legacy and Significance</h2>
+      <p>The Kalinago people of Dominica are the last remaining Indigenous community of the Eastern Caribbean, inhabiting a legally recognized <strong>3,700-acre territory</strong> along the island’s remote and rugged east coast. The territory comprises <strong>eight villages</strong>, each rich with ancestral customs, community resilience, and cultural pride. Known to the Kalinago as <strong>Wai’tukubli</strong> – meaning <em>"Tall is her body"</em> – Dominica’s mountainous terrain helped them <strong>resist European colonization for over two centuries</strong>.</p>
+      <p>Today, the Kalinago continue to preserve their heritage through <strong>basket weaving, pottery, cassava bread making</strong>, traditional governance, and deep ecological knowledge passed down through generations. Their contribution to Dominica’s identity is both historical and living, echoing the strength, artistry, and spiritual connection to land that defines Kalinago culture.</p>
+    </div>
+  </section>
+
+  <!-- Horizontal Timeline Section -->
+  <section class="section section-gray">
+    <div class="container">
+      <h2>Kalinago Historical Timeline</h2>
+      <div class="timeline-section">
+        <div class="horizontal-timeline">
+          <div class="timeline-card">
+            <div class="timeline-date">Pre-1000 CE</div>
+            <h4>Arrival from South America</h4>
+            <p>Ancestors of the Kalinago migrate from the Orinoco Basin into the Caribbean, settling Dominica and other islands.</p>
+          </div>
+
+          <div class="timeline-card">
+            <div class="timeline-date">1493</div>
+            <h4>Encounter with Columbus</h4>
+            <p>Christopher Columbus sights Dominica; Kalinago resist European incursion fiercely across the region.</p>
+          </div>
+
+          <div class="timeline-card">
+            <div class="timeline-date">1700s–1800s</div>
+            <h4>Warrior Resistance</h4>
+            <p>The Kalinago maintain control of Dominica’s interior, defending their land against French and British colonists.</p>
+          </div>
+
+          <div class="timeline-card">
+            <div class="timeline-date">1903</div>
+            <h4>Carib Reserve Established</h4>
+            <p>The British government formally recognizes the Kalinago presence by creating the Carib Reserve (now Kalinago Territory).</p>
+          </div>
+
+          <div class="timeline-card">
+            <div class="timeline-date">2003</div>
+            <h4>Centennial Celebrations</h4>
+            <p>The Kalinago commemorate 100 years of formal recognition with cultural events and community renewal efforts.</p>
+          </div>
+
+          <div class="timeline-card">
+            <div class="timeline-date">2020s</div>
+            <h4>Modern Identity and Revival</h4>
+            <p>Focus on heritage preservation, language revival, and international visibility through culture, tourism, and digital presence.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Interactive Map -->
+   
   <section class="section section-light">
+
     <div class="container">
+  
       <h2>Interactive Kalinago Territory Map</h2>
       <p>Explore key cultural and natural landmarks within the Kalinago Territory.</p>
-      <div id="map"></div>
-    </div>
+
+ <!-- Map Legend -->
+      <div class="map-container">
+  <div id="map"></div>
+  <div id="map-legend">
+    <h4>Legend</h4>
+    <ul>
+      <li><img src="assets/images/map/culture.png" alt="Cultural Site"> Cultural Site</li>
+      <li><img src="assets/images/map/view.png" alt="Viewpoint"> Viewpoint</li>
+      <li><img src="assets/images/map/food.png" alt="Food Spot"> Food Spot</li>
+    </ul>
+  </div>
+</div>
+
+
   </section>
 
   <!-- Kalinago Words -->
@@ -430,13 +730,13 @@
       <h2>Community Gallery</h2>
       <p>Photos of crafts, nature, faces, and tradition from the Kalinago Territory.</p>
       <div class="gallery-grid">
-        <img src="assets/images/gallery/kalinago-craft-1.jpg" alt="Traditional Basket">
-        <img src="assets/images/gallery/kalinago-nature-1.jpg" alt="River Path">
+        <img src="assets/images/gallery/kalinago-craft-1.png" alt="Traditional Basket">
+        <img src="assets/images/gallery/kalinago-nature-1.png" alt="River Path">
         <img src="assets/images/gallery/kalinago-center.jpg" alt="Kalinago Craft Center">
         <img src="assets/images/gallery/kalinago-event-1.jpg" alt="Cultural Event">
         <img src="assets/images/gallery/kalinago-craft-2.jpg" alt="Pottery Making">
         <img src="assets/images/gallery/kalinago-nature-2.jpg" alt="Coastal View">
-        <img src="assets/images/gallery/kalinago-people-1.jpg" alt="Community Members">
+        <img src="assets/images/gallery/kalinago-people-1.png" alt="Community Members">
         <img src="assets/images/gallery/kalinago-event-2.jpg" alt="Festival Celebration">
       </div>
     </div>
@@ -450,7 +750,7 @@
       <div class="video-grid">
         <iframe src="https://www.youtube.com/embed/DxNIhUWAW_s" title="Basket Making Documentary" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <iframe src="https://www.youtube.com/embed/brvTrd9IBbM" title="Kalinago Premiere League" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <iframe src="https://www.youtube.com/embed/POGKjTeVXXM" title="Cultural Storytelling" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/9VMG71skyaU?si=ujhkCmCkdsRO6Brn" title="Cultural Storytelling" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
     </div>
   </section>
@@ -458,11 +758,11 @@
   <!-- Past Sports Highlights -->
   <section class="section section-light">
     <div class="container">
-      <h2>Past Kalinago Sports Highlights</h2>
+      <h2>Kalinago Video Highlights</h2>
       <p>Watch moments from our cultural and sporting events held in the Territory.</p>
       <div class="video-scroll-container">
         <iframe src="https://www.youtube.com/embed/DxNIhUWAW_s" frameborder="0" allowfullscreen></iframe>
-        <iframe src="https://www.youtube.com/embed/POGKjTeVXXM" frameborder="0" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/9VMG71skyaU?si=ujhkCmCkdsRO6Brn" frameborder="0" allowfullscreen></iframe>
         <iframe src="https://www.youtube.com/embed/RtmCyAGVYFw" frameborder="0" allowfullscreen></iframe>
         <iframe src="https://www.youtube.com/embed/-GMG1cfDfQA" frameborder="0" allowfullscreen></iframe>
         <iframe src="https://www.youtube.com/embed/DxNIhUWAW_s" frameborder="0" allowfullscreen></iframe>
@@ -470,42 +770,104 @@
     </div>
   </section>
 
-  <!-- Future Fund -->
+  <!-- Suggested Places & Heritage Resources -->
+  <section class="section section-light resources-section">
+    <div class="container">
+      <h2>Places to Visit & Heritage Resources</h2>
+      <p>Explore key sites, cultural hubs, and recommended readings about the Kalinago people.</p>
+      <ul>
+        <li><a href="https://www.avirtualdominica.com/kalinago-barana-aute/" target="_blank">Kalinago Barana Aute Cultural Village</a></li>
+        <li><a href="https://www.amazon.com/Kalinago-Legacy-Indigenous-Caribbean/dp/9766408707" target="_blank">Book: "Kalinago Legacy" by Mary Wilkerson</a></li>
+        <li><a href="https://whc.unesco.org/en/tentativelists/5617/" target="_blank">UNESCO World Heritage Proposal: Kalinago Territory</a></li>
+        <li><a href="https://www.facebook.com/KalinagoTerritory/" target="_blank">Kalinago Territory Facebook Page</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=kalinago+documentary" target="_blank">Kalinago Documentaries on YouTube</a></li>
+      </ul>
+    </div>
+  </section>
+
+
+
+   <!-- Timeline Section -->
   <section class="section section-gray">
     <div class="container">
-      <h2>Coming soon..Kalinago Empowerment Fund</h2>
-      <p>A dedicated fund to support the Kalinago community through technology, education, and cultural preservation.</p>
-      
-      <div class="donation-options">
-        <div class="donation-card">
-          <h3>Education Support</h3>
-          <div class="price">$5</div>
-          <p>Provide laptops and tech devices for schools in the Kalinago Territory</p>
-          <a href="https://www.paypal.com/ncp/payment/HUKN574ZQNUYC" class="btn btn-primary">Donate Now</a>
+      <h2>Kalinago Historical Timeline</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-date">Pre-1000 CE</div>
+          <div class="timeline-content">
+            <img src="assets/images/gallery/icon1.png" alt="Migration">
+            <div>
+              <h4>Arrival from South America</h4>
+              <p>Ancestors of the Kalinago migrate from the Orinoco Basin into the Caribbean, settling Dominica and other islands.</p>
+              <audio controls src="assets/audio/timeline1.mp3"></audio>
+            </div>
+          </div>
         </div>
-        
-        <div class="donation-card">
-          <h3>Family Gift Basket</h3>
-          <div class="price">$5</div>
-          <p>Support a Kalinago family with essential supplies</p>
-          <a href="https://www.paypal.com/ncp/payment/HUKN574ZQNUYC" class="btn btn-primary">Donate Now</a>
+
+        <div class="timeline-item">
+          <div class="timeline-date">1493</div>
+          <div class="timeline-content">
+            <img src="assets/images/gallery/icon2.png" alt="Columbus Encounter">
+            <div>
+              <h4>Encounter with Columbus</h4>
+              <p>Christopher Columbus sights Dominica; Kalinago resist European incursion fiercely across the region.</p>
+              <audio controls src="assets/audio/timeline2.mp3"></audio>
+            </div>
+          </div>
         </div>
-        
-        <div class="donation-card">
-          <h3>Sports Sponsorship</h3>
-          <div class="price">$10</div>
-          <p>Sponsor prizes for the Kalinago Premier League</p>
-          <a href="https://www.paypal.com/ncp/payment/HUKN574ZQNUYC" class="btn btn-primary">Donate Now</a>
+
+        <div class="timeline-item">
+          <div class="timeline-date">1700s–1800s</div>
+          <div class="timeline-content">
+            <img src="assets/images/gallery/icon3.png" alt="Resistance">
+            <div>
+              <h4>Warrior Resistance</h4>
+              <p>The Kalinago maintain control of Dominica’s interior, defending their land against French and British colonists.</p>
+              <audio controls src="assets/audio/timeline3.mp3"></audio>
+            </div>
+          </div>
         </div>
-        
-        <div class="donation-card">
-          <h3>Scholarship</h3>
-          <div class="price">$25</div>
-          <p>Fund a scholarship for one semester of education</p>
-          <a href="https://www.paypal.com/ncp/payment/HUKN574ZQNUYC" class="btn btn-primary">Donate Now</a>
+
+        <div class="timeline-item">
+          <div class="timeline-date">1903</div>
+          <div class="timeline-content">
+            <img src="assets/images/gallery/icon4.png" alt="Carib Reserve">
+            <div>
+              <h4>Carib Reserve Established</h4>
+              <p>The British government formally recognizes the Kalinago presence by creating the Carib Reserve (now Kalinago Territory).</p>
+              <audio controls src="assets/audio/timeline4.mp3"></audio>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">2003</div>
+          <div class="timeline-content">
+            <img src="assets/images/gallery/icon5.png" alt="Centennial">
+            <div>
+              <h4>Centennial Celebrations</h4>
+              <p>The Kalinago commemorate 100 years of formal recognition with cultural events and community renewal efforts.</p>
+              <audio controls src="assets/audio/timeline5.mp3"></audio>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">2020s</div>
+          <div class="timeline-content">
+            <img src="assets/images/gallery/icon6.png" alt="Modern Era">
+            <div>
+              <h4>Modern Identity and Revival</h4>
+              <p>Focus on heritage preservation, language revival, and international visibility through culture, tourism, and digital presence.</p>
+              <audio controls src="assets/audio/timeline6.mp3"></audio>
+            </div>
+          </div>
         </div>
       </div>
-      
+    </div>
+  </section>
+
+  <!-- Future Fund -->
       <div style="text-align: center; margin-top: 2rem;">
         <p>If you'd like to support me as I build this initiative:</p>
         <style>.pp-HUKN574ZQNUYC{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;}</style>
@@ -526,62 +888,141 @@
     </div>
   </footer>
 
+
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script>
-    // Initialize Kalinago Map
-    const map = L.map('map').setView([15.4967852, -61.2572866], 13);
-    
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-    
-    // Custom icon
+
+    const markers = [
+      {
+        coords: [15.4968689, -61.2579357],
+        title: "Where I'm from. My home :-)",
+        description: "Welcome to my home.",
+        image: "kalinago-center.jpg",
+        type: "culture"
+      },
+      {
+        coords: [15.5019422, -61.2583682],
+        title: "Kalinago Barana Aute",
+        description: "Cultural village and heritage center.",
+        image: "kalinago-culture-1.png",
+        type: "culture"
+      },
+      {
+        coords: [15.4961451, -61.257925],
+        title: "Tilou Kanawa Restaurant",
+        description: "A blend of traditional cuisine with stunning views.",
+        image: "kalinago-craft-2.jpg",
+        type: "food"
+      },
+      {
+        coords: [15.4964956, -61.2583294],
+        title: "Eezee Side Cassava Delicacies",
+        description: "Locally made Cassava Delicacies.",
+        image: "kalinago-nature-2.jpg",
+        type: "food"
+      },
+      {
+        coords: [15.4997818, -61.2619966],
+        title: "Jolly John Park",
+        description: "Community recreation and event grounds.",
+        image: "kalinago-event-1.jpg",
+        type: "view"
+      },
+      {
+        coords: [15.490022, -61.2537225],
+        title: "Kalinago Council Office",
+        description: "Administrative center of the Territory.",
+        image: "kalinago-people-1.png",
+        type: "culture"
+      },
+      {
+        coords: [15.4920956, -61.2666399],
+        title: "Horseback Ridge",
+        description: "Amazing View point.",
+        image: "kalinago-nature-1.png",
+        type: "view"
+      }
+    ];
+
+    let map = L.map('map').setView([15.4967852, -61.2572866], 13);
+
+    const baseLayers = {
+      "Carto Light": L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; <a href="https://carto.com/">CartoDB</a>'
+      }),
+      "OSM Standard": L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>'
+      }),
+      "Satellite": L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+        subdomains:['mt0','mt1','mt2','mt3'],
+        attribution: '&copy; <a href="https://www.google.com/">Google</a>'
+      })
+    };
+
+    baseLayers["Carto Light"].addTo(map);
+    L.control.layers(baseLayers).addTo(map);
+
     const kalinagoIcon = L.icon({
       iconUrl: 'assets/images/map/kalinago-marker.png',
       iconSize: [32, 32],
       iconAnchor: [16, 32],
       popupAnchor: [0, -32]
     });
-    
-    // Add markers
-    const markers = [
-      {
-        coords: [15.4846543, -61.2644644],
-        title: "Kalinago Barana Aute",
-        description: "Cultural village and heritage center."
-      },
-      {
-        coords: [15.4575219, -61.2695284],
-        title: "E'scale Tete Chien",
-        description: "Viewpoint and traditional lookout."
-      },
-      {
-        coords: [15.4882882, -61.2589944],
-        title: "Centipede Trail",
-        description: "Nature trail rich in flora and fauna."
-      },
-      {
-        coords: [15.4952965, -61.2599386],
-        title: "Jolly John Park",
-        description: "Community recreation and event grounds."
-      },
-      {
-        coords: [15.4812345, -61.2723456],
-        title: "Kalinago Council Office",
-        description: "Administrative center of the Territory."
-      },
-      {
-        coords: [15.4923456, -61.2654321],
-        title: "Sacred Waterfall",
-        description: "Traditional spiritual site."
-      }
-    ];
-    
-    markers.forEach(marker => {
-      L.marker(marker.coords, {icon: kalinagoIcon})
-        .addTo(map)
-        .bindPopup(`<b>${marker.title}</b><br>${marker.description}`);
+
+    const markerGroups = {
+      culture: L.layerGroup(),
+      food: L.layerGroup(),
+      view: L.layerGroup()
+    };
+
+    markers.forEach(m => {
+      const marker = L.marker(m.coords, { icon: kalinagoIcon })
+        .bindPopup(`<b>${m.title}</b><br>${m.description}<br><img src='assets/images/gallery/${m.image}' width='100%' style='margin-top:10px;border-radius:6px;'/>`)
+        .on('mouseover', function () { this.openPopup(); })
+        .on('mouseout', function () { this.closePopup(); });
+
+      markerGroups[m.type].addLayer(marker);
     });
+
+    Object.values(markerGroups).forEach(group => group.addTo(map));
+    L.control.layers(null, markerGroups, { collapsed: false }).addTo(map);
+
+    let current = 0;
+    function tourMarkers() {
+      const m = markers[current];
+      map.setView(m.coords, 15);
+      L.popup()
+        .setLatLng(m.coords)
+        .setContent(`<b>${m.title}</b><br>${m.description}<br><img src='assets/images/gallery/${m.image}' width='100%' style='margin-top:10px;border-radius:6px;'/>`)
+        .openOn(map);
+      current = (current + 1) % markers.length;
+    }
+    tourMarkers();
+    setInterval(tourMarkers, 7000);
+
+    // Scroll animation for timeline items
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.2
+    });
+    timelineItems.forEach(item => observer.observe(item));
+
+    // Optional: Autoscroll timeline into view slowly
+    function autoScrollTimeline() {
+      const section = document.querySelector('.timeline');
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+    window.addEventListener('load', () => {
+      setTimeout(autoScrollTimeline, 20000);
+    });
+
   </script>
 </body>
 </html>
