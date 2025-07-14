@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Kalinago Territory | Onan Thomas</title>
-  <link rel="icon" href="assets/images/favicon.png" type="image/png">
+  <link rel="icon" href="/favicon.png" type="image/png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   <style>
@@ -171,7 +171,7 @@
 
     .timeline-date {
       font-weight: bold;
-      color: var(--primary-green);
+      color: var(--kalinago-earth);
       margin-bottom: 0.3rem;
       min-width: 100px;
     }
@@ -232,7 +232,7 @@
     }
 
     .timeline-card h4 {
-      color: var(--primary-green);
+      color: var(--kalinago-earth-);
       margin-bottom: 0.5rem;
       font-size: 1.1rem;
     }
@@ -253,7 +253,7 @@
       height: 8px;
     }
     .timeline-section::-webkit-scrollbar-thumb {
-      background-color: var(--primary-green);
+      background-color: var(--kalinago-yellow);
       border-radius: 10px;
     }
 
@@ -1013,15 +1013,6 @@
       threshold: 0.2
     });
     timelineItems.forEach(item => observer.observe(item));
-
-    // Optional: Autoscroll timeline into view slowly
-    function autoScrollTimeline() {
-      const section = document.querySelector('.timeline');
-      section.scrollIntoView({ behavior: 'smooth' });
-    }
-    window.addEventListener('load', () => {
-      setTimeout(autoScrollTimeline, 20000);
-    });
 
   </script>
 </body>
