@@ -6,256 +6,8 @@
     <title>Contact Me | Onan Thomas</title>
     <link rel="icon" href="assets/images/favicon.png" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* Shared styles from portfolio.html */
-        :root {
-            --primary-green: #2ba745;
-            --secondary-blue: #007bff;
-            --neutral-gray: #6c757d;
-            --light-gray: #f8f9fa;
-            --dark-gray: #343a40;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background-color: #ffffff;
-            color: var(--neutral-gray);
-            line-height: 1.6;
-        }
-        
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-        
-        /* Header - same as other pages */
-        header {
-            background: linear-gradient(135deg, var(--dark-gray) 0%, var(--neutral-gray) 100%);
-            color: white;
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: white;
-        }
-        
-        .logo span {
-            color: var(--primary-green);
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-        
-        .nav-links li {
-            margin-left: 1.5rem;
-        }
-        
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-        
-        .nav-links a:hover {
-            color: var(--primary-green);
-        }
-        
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 5rem 0;
-            text-align: center;
-        }
-        
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .hero h1 {
-            color: white;
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-        
-        /* Contact Section - matching portfolio.html */
-        .contact-section {
-            padding: 5rem 0;
-            background: var(--light-gray);
-        }
-        
-        .contact-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        
-        .contact-info {
-            background: white;
-            border-radius: 8px;
-            padding: 2rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        .contact-info h3 {
-            color: var(--primary-green);
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-        }
-        
-        .contact-method {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1.5rem;
-        }
-        
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background: rgba(43, 167, 69, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 1rem;
-            color: var(--primary-green);
-            font-size: 1.2rem;
-        }
-        
-        .contact-form {
-            background: white;
-            border-radius: 8px;
-            padding: 2rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: var(--dark-gray);
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 1rem;
-            transition: border-color 0.3s;
-        }
-        
-        .form-control:focus {
-            outline: none;
-            border-color: var(--primary-green);
-        }
-        
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 0.8rem 1.8rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-primary {
-            background: var(--primary-green);
-            color: white;
-            border: 2px solid var(--primary-green);
-            cursor: pointer;
-            width: 100%;
-        }
-        
-        .btn-primary:hover {
-            background: transparent;
-            color: var(--primary-green);
-        }
-        
-        /* Footer */
-        footer {
-            background: var(--dark-gray);
-            color: rgba(255, 255, 255, 0.7);
-            text-align: center;
-            padding: 2rem 0;
-            font-size: 0.9rem;
-        }
-        
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin: 1rem 0 2rem;
-        }
-        
-        .social-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--primary-green);
-            font-size: 1.5rem;
-            transition: all 0.3s ease;
-            text-decoration: none;
-        }
-        
-        .social-link:hover {
-            background: var(--primary-green);
-            color: white;
-            transform: translateY(-5px);
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/contact.css">
 </head>
 <body>
     <!-- Header -->
@@ -290,8 +42,11 @@
     </section>
 
     <!-- Contact Section -->
-    <section class="contact-section">
+    <section id="contact" class="contact-section">
         <div class="container">
+            <h2>Get In Touch</h2>
+            <p class="contact-intro">Have a project in mind or want to discuss potential opportunities? Get in touch!</p>
+            
             <div class="contact-container">
                 <div class="contact-info">
                     <h3>Contact Information</h3>
@@ -322,18 +77,18 @@
                         </div>
                         <div>
                             <h4>Location</h4>
-                            <p>Roseau, Dominica</p>
+                            <p>Prospect, Nevis</p>
                         </div>
                     </div>
                     
                     <div class="social-links">
-                        <a href="https://github.com/OnanT" class="social-link" target="_blank">
+                        <a href="https://github.com/OnanT" class="social-link" target="_blank" aria-label="GitHub">
                             <i class="fab fa-github"></i>
                         </a>
-                        <a href="https://www.linkedin.com/in/onan-thomas/" class="social-link" target="_blank">
+                        <a href="https://www.linkedin.com/in/onan-thomas/" class="social-link" target="_blank" aria-label="LinkedIn">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
-                        <a href="https://twitter.com/Dr_Cokes" class="social-link" target="_blank">
+                        <a href="https://twitter.com/Dr_Cokes" class="social-link" target="_blank" aria-label="Twitter">
                             <i class="fab fa-twitter"></i>
                         </a>
                     </div>
@@ -341,28 +96,35 @@
                 
                 <div class="contact-form">
                     <h3>Send a Message</h3>
-                    <form id="contactForm" action="mailto:onanthomas@proton.me" method="post" enctype="text/plain">
+                    <form id="contactForm">
+                        <div id="formMessage" class="form-message"></div>
+                        
                         <div class="form-group">
-                            <label for="name">Full Name</label>
-                            <input type="text" id="name" name="name" class="form-control" required>
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" class="form-control" required aria-required="true">
                         </div>
                         
                         <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" class="form-control" required>
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" class="form-control" required aria-required="true">
                         </div>
                         
                         <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" id="subject" name="subject" class="form-control" required>
+                            <label for="subject">Subject *</label>
+                            <input type="text" id="subject" class="form-control" required aria-required="true">
                         </div>
                         
                         <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" class="form-control" required></textarea>
+                            <label for="message">Message *</label>
+                            <textarea id="message" class="form-control" required aria-required="true"></textarea>
                         </div>
                         
-                        <button type="submit" class="btn btn-primary">Send Message</button>
+                        <button type="submit" class="btn btn-primary">
+                            <span id="submitText">Send Message</span>
+                            <span id="spinner" style="display:none;">
+                                <i class="fas fa-spinner fa-spin"></i> Sending...
+                            </span>
+                        </button>
                     </form>
                 </div>
             </div>
@@ -377,88 +139,22 @@
         </div>
     </footer>
 
-        <!-- Thank You Modal -->
-        <div id="thankYouModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; align-items: center; justify-content: center;">
-            <div class="thank-you">
-                <div class="thank-you-content">
-                    <div class="thank-you-icon">
-                        <i class="fas fa-check-circle"></i>
-                    </div>
-                    <h2>Thank You!</h2>
-                    <p>Your message has been sent successfully.</p>
-                    <p>I'll get back to you as soon as possible.</p>
-                    <a href="#" class="btn btn-primary" onclick="closeModal()">Back to Blog</a>
+    <!-- Thank You Modal -->
+    <div id="thankYouModal" style="display: none;">
+        <div class="thank-you">
+            <div class="thank-you-content">
+                <div class="thank-you-icon">
+                    <i class="fas fa-check-circle"></i>
                 </div>
+                <h2>Thank You!</h2>
+                <p>Your message has been sent successfully.</p>
+                <p>I'll get back to you as soon as possible.</p>
+                <a href="index.html" class="btn btn-primary" onclick="closeModal()">Back to Home</a>
             </div>
         </div>
+    </div>
 
-    <script>
-        // Contact Form Handling
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Show loading spinner
-            document.getElementById('submitText').style.display = 'none';
-            document.getElementById('spinner').style.display = 'inline';
-            
-            // Form data
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                subject: document.getElementById('subject').value,
-                message: document.getElementById('message').value
-            };
-            
-            // FormSubmit endpoint - replace with your FormSubmit email
-            const endpoint = 'https://formsubmit.co/ajax/onanthomas@proton.me';
-            
-            // AJAX request
-            fetch(endpoint, {
-                method: 'POST',
-                headers: { 
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success === "true") {
-                    // Show success message
-                    document.getElementById('thankYouModal').style.display = 'flex';
-                    
-                    // Reset form
-                    document.getElementById('contactForm').reset();
-                } else {
-                    showMessage('Error: ' + data.message, 'error');
-                }
-            })
-            .catch(error => {
-                showMessage('Error: ' + error.message, 'error');
-            })
-            .finally(() => {
-                // Hide spinner
-                document.getElementById('submitText').style.display = 'inline';
-                document.getElementById('spinner').style.display = 'none';
-            });
-        });
-        
-        function showMessage(text, type) {
-            const messageEl = document.getElementById('formMessage');
-            messageEl.textContent = text;
-            messageEl.className = `form-message ${type}`;
-            messageEl.style.display = 'block';
-            
-            // Auto-hide after 5 seconds
-            setTimeout(() => {
-                messageEl.style.display = 'none';
-            }, 3000);
-        }
-        
-        function closeModal() {
-            document.getElementById('thankYouModal').style.display = 'none';
-        }
-    </script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/contact.js"></script>
 </body>
 </html>
-[file content end]
