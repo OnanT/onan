@@ -10,19 +10,6 @@
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/index.css">
 </head>
-    <!--Start of Tawk.to Script-->
-    <script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/68696f0ef43c32191920b870/1ivdtjkoi';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-    })();
-    </script>
-    <!--End of Tawk.to Script-->
 <body>
     <!-- Header -->
     <header>
@@ -177,213 +164,244 @@
 <section id="projects" class="projects">
   <div class="container">
     <h2>Featured Projects</h2>
-    <div class="project-grid">
+    <div class="project-scroll-container">
+            <!-- Status indicator -->
+            <div class="scroll-status" id="scroll-status">
+                🎯 Initializing...
+            </div>
+                <div class="project-scroll">
+                    <!-- Design Portfolio -->
+                    <div class="project-card">
+                        <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80" alt="Design Portfolio">
+                        </div>
+                        <div class="project-content">
+                        <h3>Design Portfolio</h3>
+                        <p>Real-world branding assets, promotional banners, and social media visuals designed for clarity and communication. Includes work with tight turnaround for campaigns and community events.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Photoshop</span>
+                            <span class="project-tag">Branding</span>
+                            <span class="project-tag">Visual Comms</span>
+                        </div>
+                        <a href="portfolio.html" class="btn btn-primary">View Portfolio</a>
+                        </div>
+                    </div>
 
-      <!-- Design Portfolio -->
-      <div class="project-card">
-        <div class="project-image">
-          <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80" alt="Design Portfolio">
-        </div>
-        <div class="project-content">
-          <h3>Design Portfolio</h3>
-          <p>Real-world branding assets, promotional banners, and social media visuals designed for clarity and communication. Includes work with tight turnaround for campaigns and community events.</p>
-          <div class="project-tags">
-            <span class="project-tag">Photoshop</span>
-            <span class="project-tag">Branding</span>
-            <span class="project-tag">Visual Comms</span>
-          </div>
-          <a href="portfolio.html" class="btn btn-primary">View Portfolio</a>
-        </div>
-      </div>
+                    <!-- Technical Projects -->
+                    <div class="project-card">
+                        <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1015&q=80" alt="Tech Projects">
+                        </div>
+                        <div class="project-content">
+                        <h3>Technical Projects</h3>
+                        <p>Custom automation scripts, API integrations, and production-ready deployment tools. Includes hands-on work supporting Temenos platforms, and experimental Python tools in progress.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Temenos</span>
+                            <span class="project-tag">API</span>
+                        </div>
+                        <a href="portfolio.html" class="btn btn-primary">View Projects</a>
+                        </div>
+                    </div>
 
-      <!-- Technical Projects -->
-      <div class="project-card">
-        <div class="project-image">
-          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1015&q=80" alt="Tech Projects">
-        </div>
-        <div class="project-content">
-          <h3>Technical Projects</h3>
-          <p>Custom automation scripts, API integrations, and production-ready deployment tools. Includes hands-on work supporting Temenos platforms, and experimental Python tools in progress.</p>
-          <div class="project-tags">
-            <span class="project-tag">Python</span>
-            <span class="project-tag">Temenos</span>
-            <span class="project-tag">API</span>
-          </div>
-          <a href="portfolio.html" class="btn btn-primary">View Projects</a>
-        </div>
-      </div>
+                    <!-- Design & Tech Blog -->
+                    <div class="project-card">
+                        <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="Blog">
+                        </div>
+                        <div class="project-content">
+                        <h3>Design & Tech Blog</h3>
+                        <p>Writings on design logic, secure system design, bug bounty methodology, and lessons learned from real-world integration work. Insightful and honest content for creators and engineers alike.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Bug Bounty</span>
+                            <span class="project-tag">Design Thinking</span>
+                            <span class="project-tag">Real-World</span>
+                        </div>
+                        <a href="blog.html" class="btn btn-primary">Read Blog</a>
+                        </div>
+                    </div>
 
-      <!-- Design & Tech Blog -->
-      <div class="project-card">
-        <div class="project-image">
-          <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="Blog">
-        </div>
-        <div class="project-content">
-          <h3>Design & Tech Blog</h3>
-          <p>Writings on design logic, secure system design, bug bounty methodology, and lessons learned from real-world integration work. Insightful and honest content for creators and engineers alike.</p>
-          <div class="project-tags">
-            <span class="project-tag">Bug Bounty</span>
-            <span class="project-tag">Design Thinking</span>
-            <span class="project-tag">Real-World</span>
-          </div>
-          <a href="blog.html" class="btn btn-primary">Read Blog</a>
-        </div>
-      </div>
+                    <!-- GreyWolf Project -->
+                    <div class="project-card">
+                        <div class="project-image">
+                        <img src="/assets/images/gallery/greywolf5.png" alt="GreyWolf Project">
+                        </div>
+                        <div class="project-content">
+                        <h3>GreyWolf Automation Framework</h3>
+                        <p>My personal API-focused recon toolkit. Built for bug bounty efficiency using Kiterunner, nuclei, ffuf, and a custom modular shell. Hosted on GitHub and deployed locally for hands-on audits.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Recon</span>
+                            <span class="project-tag">Bug Bounty</span>
+                            <span class="project-tag">Automation</span>
+                        </div>
+                        <a href="greywolf.html" class="btn btn-primary">View GreyWolf</a>
+                        <a href="https://github.com/OnanT/greywolf" class="btn btn-secondary" target="_blank">GitHub Repo</a>
+                        </div>
+                    </div>
+                </div>
+            <!-- Enhanced control buttons -->
+            <div class="scroll-controls">
+                <button class="scroll-btn pause-btn" title="Play/Pause">⏸️</button>
+                <button class="scroll-btn speed-btn" data-speed="15" title="Turbo Speed">🚀</button>
+                <button class="scroll-btn speed-btn" data-speed="25" title="Fast">⚡</button>
+                <button class="scroll-btn speed-btn active" data-speed="35" title="Normal">🎯</button>
+                <button class="scroll-btn speed-btn" data-speed="50" title="Chill">🌙</button>
+                <button class="scroll-btn direction-btn" title="Reverse Direction">🔄</button>
+            </div>
 
-      <!-- GreyWolf Project -->
-      <div class="project-card">
-        <div class="project-image">
-          <img src="/assets/images/gallery/greywolflogo.png" alt="GreyWolf Project">
-        </div>
-        <div class="project-content">
-          <h3>GreyWolf Automation Framework</h3>
-          <p>My personal API-focused recon toolkit. Built for bug bounty efficiency using Kiterunner, nuclei, ffuf, and a custom modular shell. Hosted on GitHub and deployed locally for hands-on audits.</p>
-          <div class="project-tags">
-            <span class="project-tag">Recon</span>
-            <span class="project-tag">Bug Bounty</span>
-            <span class="project-tag">Automation</span>
-          </div>
-          <a href="greywolf.html" class="btn btn-primary">View GreyWolf</a>
-          <a href="https://github.com/OnanT/greywolf" class="btn btn-secondary" target="_blank">GitHub Repo</a>
-        </div>
-      </div>
-
+            <!-- Cycle progress -->
+            <div class="cycle-progress">
+                <div class="progress-dot active"></div>
+                <div class="progress-dot"></div>
+                <div class="progress-dot"></div>
+                <div class="progress-dot"></div>
+                <div class="progress-dot"></div>
+            </div>
     </div>
   </div>
 </section>
 
 
     <!-- Kalinago Territory Section -->
-    <section id="kalinago" class="kalinago-section">
-        <div class="container">
-            <h2>Kalinago Territory Initiative</h2>
-            <div class="kalinago-container">
-                <div class="kalinago-content">
-                    <p>A descendant's digital contribution to preserving and honoring Kalinago heritage and culture.</p>
-                    <p>The Kalinago of Dominica are the last remaining Indigenous people of the Eastern Caribbean, inhabiting a 3,700-acre territory of eight villages along the island’s wild east coast. Known for their craftsmanship, spiritual resilience, and deep environmental knowledge, they continue to honor their ancestral heritage while navigating the modern world. Calling Dominica “Wai’tukubli” – Tall is her body, they used the island’s rugged terrain as a natural fortress, successfully resisting European colonization for over 200 years. Today, they remain a living testament to the strength, resistance, and enduring culture of the pre-Columbian Caribbean.</p>
-                    
-                    <h3>Cultural Preservation Goals:</h3>
-                    <ul class="kalinago-features">
-                        <li>Document Kalinago language, traditions, and history</li>
-                        <li>Create digital archive of cultural artifacts</li>
-                        <li>Develop educational resources for schools</li>
-                        <li>Support community economic development</li>
-                        <li>Promote Kalinago arts and crafts globally</li>
-                    </ul>
-                    
-                    <div style="margin-top: 2rem;">
-                        <a href="kalinago.html" class="btn btn-primary">Explore Kalinago Heritage</a>
-                    </div>
-                </div>
-                <div class="kalinago-image">
-                    <img src="assets/images/gallery/kalinago-01.png" alt="Kalinago Culture">
-                </div>
-            </div>
-        </div>
-    </section>
+<section id="kalinago" class="kalinago-section">
+  <div class="container kalinago-flex">
+
+    <!-- Image Block -->
+    <div class="kalinago-image">
+      <img src="assets/images/gallery/kalinago-01.png" alt="Kalinago Culture">
+    </div>
+
+    <!-- Content Block -->
+    <div class="kalinago-content">
+      <p class="section-tagline">Cultural Roots × Digital Vision</p>
+      <h2>Digitally Preserving Kalinago Culture</h2>
+      <p class="lead">
+        This initiative is rooted in my Indigenous Kalinago heritage. Through design, documentation, and technology, I’m working to preserve our language, stories, traditions, and art—while creating digital platforms that promote Kalinago identity globally.
+      </p>
+
+      <ul class="kalinago-goals">
+        <li>📖 Document the Kalinago language, history, and oral traditions</li>
+        <li>🎨 Promote local arts, crafts, and cultural expressions worldwide</li>
+        <li>🎓 Develop digital content for youth education and cultural literacy</li>
+        <li>🌍 Digitally archive past events and share future community plans</li>
+      </ul>
+
+      <div class="kalinago-actions">
+        <a href="kalinago.html" class="btn btn-primary">Explore the Kalinago Project</a>
+        <a href="#donate" class="btn btn-secondary">Support the Mission</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
 
     <!-- GreyWolf Project Section -->
-    <section id="greywolf" class="greywolf-section">
-        <div class="container">
-            <h2>GreyWolf Project</h2>
-            <div class="greywolf-container">
-                <div class="greywolf-image">
-                    <img src="assets/images/gallery/greywolflogo2.png" alt="GreyWolf Project">
-                </div>
-                <div class="greywolf-content">
-                    <h3>Automated Reconnaissance Framework</h3>
-                    <p>GreyWolf is a modular bug bounty recon framework tailored for automated API and web asset discovery. It integrates tools like Kiterunner, nuclei, ffuf, and others, and is built for extensibility.</p>
-                    
-                    <h4>Key Features:</h4>
-                    <ul class="greywolf-features">
-                        <li>Subdomain Enumeration (AssetFinder, Amass)</li>
-                        <li>Advanced Fuzzing with custom wordlists</li>
-                        <li>API Discovery and Testing</li>
-                        <li>Vulnerability Scanning (nuclei)</li>
-                        <li>Modular Architecture for easy extension</li>
-                    </ul>
-                    
-                    <div style="margin-top: 2rem;">
-                        <a href="greywolf.html" class="btn btn-primary">View Project Details</a>
-                        <a href="https://github.com/OnanT/greywolf" class="btn btn-secondary" target="_blank">GitHub Repository</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<section id="greywolf" class="greywolf-section dark-theme">
+  <div class="container greywolf-flex">
+
+    <!-- Image Block -->
+    <div class="greywolf-image">
+        <img id="greywolf-rotator" src="assets/images/gallery/greywolflogo.png" alt="GreyWolf" />
+    </div>
+
+
+    <!-- Content Block -->
+    <div class="greywolf-content">
+      <h2>GreyWolf Recon Framework</h2>
+      <p class="lead">
+        GreyWolf is a modular recon framework built for API hunting, automation, and real-world bug bounty operations. Fast. Focused. Terminal-ready.
+      </p>
+
+      <ul class="greywolf-features">
+        <li>🛠 Integrates <strong>ffuf</strong>, <strong>nuclei</strong>, <strong>httpx</strong>, <strong>Kiterunner</strong></li>
+        <li>⚙️ Custom scripts for passive + active API recon</li>
+        <li>🐺 Runs inside <code>Kali</code> or <code>Docker</code> with no cloud dependencies</li>
+      </ul>
+
+      <div class="greywolf-actions">
+        <a href="greywolf.html" class="btn btn-primary">View Project Details</a>
+        <a href="https://github.com/OnanT/greywolf" class="btn btn-secondary" target="_blank">GitHub Repository</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="greywolf-cli" class="cli-demo">
+  <div class="container">
+    <div class="cli-box">
+      <pre id="cli-output"></pre>
+    </div>
+  </div>
+</section>
 
     <!-- Donation Section -->
-    <section id="donate" class="donation-section">
-        <div class="container">
-            <h2>Support Our Initiatives</h2>
-            <p>Your contributions help fund development of open-source projects and cultural initiatives.</p>
-            
-            <div class="donation-options">
-                <div class="donation-card">
-                    <h3>First Motivation</h3>
-                    <div class="price">$5</div>
-                    <p>Supply laptops to schools</p>
-                    <a href="#" class="btn btn-primary">Donate</a>
-                </div>
-                
-                <div class="donation-card">
-                    <h3>GreyWolf</h3>
-                    <div class="price">$0</div>
-                    <p>Support my bug bounty project</p>
-                    <a href="#" class="btn btn-primary">Donate</a>
-                </div>
-                
-                <div class="donation-card">
-                    <h3>Sponsor</h3>
-                    <div class="price">$15</div>
-                    <p>Groth</p>
-                    <a href="#" class="btn btn-primary">Donate</a>
-                </div>
-                
-                <div class="donation-card">
-                    <h3>Equipment Fund</h3>
-                    <div class="price">$20</div>
-                    <p>Sponsor a event promotion package</p>
-                    <a href="#" class="btn btn-primary">Donate</a>
-                </div>
-            </div>
-            
-            <div style="margin-top: 2rem;">
-                <!-- PayPal Single Button -->
-                <style>.pp-HUKN574ZQNUYC{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;}</style>
-                <form action="https://www.paypal.com/ncp/payment/HUKN574ZQNUYC" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;">
-                  <input class="pp-HUKN574ZQNUYC" type="submit" value="Donate with PayPal" />
-                  <img src=https://www.paypalobjects.com/images/Debit_Credit.svg alt="cards" />
-                  <section style="font-size: 0.75rem;"> Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
-                </form>
-            </div>
-        </div>
-    </section>
+<section id="donate" class="donation-section">
+  <div class="container">
+    <h2>Support My Work</h2>
+    <p>Your contribution helps move two missions forward: preserving Kalinago heritage through digital initiatives, and building open-source security tools for the bug bounty and cybersecurity community.</p>
+
+    <div class="donation-options">
+      
+      <!-- Kalinago Support -->
+      <div class="donation-card">
+        <h3>Kalinago Initiative</h3>
+        <p>Help preserve Indigenous knowledge, stories, and language by supporting cultural digitization, youth education, and community-driven tech projects.</p>
+        <a href="kalinago.html" class="btn btn-primary">Explore Initiative</a>
+      </div>
+
+      <!-- GreyWolf Support -->
+      <div class="donation-card">
+        <h3>GreyWolf Project</h3>
+        <p>Support ongoing development of my API recon automation framework used in bug bounty hunting and real-world vulnerability research.</p>
+        <a href="greywolf.html" class="btn btn-secondary">View Project</a>
+      </div>
+
+    </div>
+
+
+    <!-- PayPal Donation Button -->
+    <div class="donation-paypal">
+      <p>Donate securely via PayPal:</p>
+      <form action="https://www.paypal.com/ncp/payment/HUKN574ZQNUYC" method="post" target="_blank">
+        <input class="paypal-button" type="submit" value="Donate with PayPal" />
+        <img src="https://www.paypalobjects.com/images/Debit_Credit.svg" alt="cards" />
+        <section class="paypal-powered">Powered by 
+          <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" />
+        </section>
+      </form>
+    </div>
+  </div>
+</section>
+
+
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2>Get In Touch</h2>
-            <p>Have a project in mind or want to discuss potential opportunities?</p>
-            
-            <div class="social-links">
-                <a href="https://github.com/OnanT" class="social-link" target="_blank">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/onan-thomas/" class="social-link" target="_blank">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
-                <a href="https://twitter.com/Dr_Cokes" class="social-link" target="_blank">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                <a href="mailto:onan.thomas.08@gmail.com" class="social-link">
-                    <i class="fas fa-envelope"></i>
-                </a>
-            </div>
-            
-            <a href="contact.html" class="btn btn-primary">Send a Message</a>
-        </div>
-    </section>
+<section id="connect" class="connect-section">
+  <div class="container">
+    <h2>Let’s Connect</h2>
+    <p class="lead">I'm open to new opportunities, partnerships, and ideas.</p>
+
+    <div class="social-icons">
+      <a href="https://github.com/OnanT" target="_blank" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/onan-thomas" target="_blank" aria-label="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://twitter.com/Dr_Cokes" target="_blank" aria-label="Twitter">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </div>
+
+    <a href="contact.html" class="btn btn-primary contact-btn">Go to Contact Page</a>
+  </div>
+</section>
+
+
+
 
     <!-- Footer -->
     <footer>
@@ -393,8 +411,22 @@
         </div>
     </footer>
 
+
   <script src="assets/js/main.js"></script>
   <script src="assets/js/index.js"></script>
-    
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/68696f0ef43c32191920b870/1ivdtjkoi';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
+
 </body>
 </html>
