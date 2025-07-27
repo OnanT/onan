@@ -1,20 +1,20 @@
-        /* Brand Color Variables */
-        :root {
-            --primary-green: #2ba745;
-            --secondary-blue: #007bff;
-            --neutral-gray: #6c757d;
-            --accent-teal: #17a2b8;
-            --light-gray: #f8f9fa;
-            --dark-gray: #343a40;
-            --terminal-green: #32cd32;
-            --terminal-bg: #1e1e1e;
-        }
-        @keyframes flickerIn {
-        0% { opacity: 0; filter: brightness(2); }
-        5% { opacity: 1; filter: brightness(1); }
-        10% { opacity: 0.3; }
-        15% { opacity: 1; }
-        100% { opacity: 1; }
+/* Brand Color Variables */
+:root {
+    --primary-green: #2ba745;
+    --secondary-blue: #007bff;
+    --neutral-gray: #6c757d;
+    --accent-teal: #17a2b8;
+    --light-gray: #f8f9fa;
+    --dark-gray: #343a40;
+    --terminal-green: #32cd32;
+    --terminal-bg: #1e1e1e;
+}
+@keyframes flickerIn {
+0% { opacity: 0; filter: brightness(2); }
+5% { opacity: 1; filter: brightness(1); }
+10% { opacity: 0.3; }
+15% { opacity: 1; }
+100% { opacity: 1; }
     }
 
     body {
@@ -545,3 +545,11 @@
                 max-width: 100%;
             }
         }
+
+
+#tidio-chat {
+    position: fixed !important;
+    bottom: 20px !important;
+    right: 20px !important;
+    z-index: 9999999 !important;
+}

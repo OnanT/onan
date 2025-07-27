@@ -43,3 +43,41 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
+
+    // Smartsupp Live Chat script
+// main.js - Alternative approach
+document.addEventListener('DOMContentLoaded', function() {
+    // Create and inject chat script
+    var chatScript = document.createElement('script');
+    chatScript.type = 'text/javascript';
+    chatScript.innerHTML = `
+        var _smartsupp = _smartsupp || {};
+        _smartsupp.key = '97a7e1e509fd751e6deb295735119e2631f29bdd';
+        window.smartsupp||(function(d) {
+            var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+            s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+            c.type='text/javascript';c.charset='utf-8';c.async=true;
+            c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+        })(document);
+    `;
+    document.head.appendChild(chatScript);
+});
+
+        function matrixEffect(e) {
+            const button = e.target;
+            const originalText = button.textContent;
+            const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+            let iterations = 0;
+            
+            const interval = setInterval(() => {
+                button.textContent = originalText.split('').map((char, index) => {
+                    if (index < iterations) return originalText[index];
+                    return chars[Math.floor(Math.random() * chars.length)];
+                }).join('');
+                
+                if (iterations >= originalText.length) clearInterval(interval);
+                iterations += 1/3;
+            }, 30);
+            
+            addRipple(e);
+        }
