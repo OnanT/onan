@@ -13,7 +13,6 @@
   --accent-coralred: #e74c3c;
   --kalinago-yellow: #FFD140;
   --kalinago-earth: #8B5A2B;
-  --terminal-green: #32cd32;
   --terminal-bg: #1e1e1e;
 }
 
@@ -57,13 +56,19 @@ h2:after {
     width: 50px;
     height: 3px;
     background: var(--primary-green);
+    transform: scaleX(.5);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+h2:hover:after {
+    transform: scaleX(100%);
 }
 
 .container {
-  width: 90%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 15px;
+  padding: 0 2px;
 }
 
 /* Header/Nav styles */
@@ -151,6 +156,7 @@ padding: 0.5rem;
     font-weight: 600;
     transition: all 0.3s ease;
     margin: 0.5rem;
+    
 }
 
 .btn-primary {
@@ -162,6 +168,8 @@ padding: 0.5rem;
 .btn-primary:hover {
     background: transparent;
     color: var(--primary-green);
+    transform: translateY(-2px);
+    box-shadow: 0 2px 6px var(--accent-teal);
 }
 
 .btn-secondary {
@@ -214,7 +222,6 @@ padding: 0.5rem;
     left: 100%;
 }
 
-
 /* Live chat widget */
 [id*="smartsupp"], [id*="tidio"], [id*="tawk"], 
 #smartsupp-widget, #tidio-chat, #tawkchat-minified-container {
@@ -231,7 +238,7 @@ padding: 0.5rem;
     background-size: cover;
     background-position: center;
     color: white;
-    padding: 5rem 0;
+    padding: 3rem 0;
     text-align: center;
 }
 
@@ -239,6 +246,14 @@ padding: 0.5rem;
     color: white;
     font-size: 3rem;
     margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .tagline {
